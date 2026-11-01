@@ -16,17 +16,17 @@ export default function MarkerDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Marker>
             <MarkerContent>The chat started.</MarkerContent>
           </Marker>
         </Example>
-        <Example title="Separator">
+        <Example title="Separator" canvas>
           <Marker variant="separator">
             <MarkerContent>Today</MarkerContent>
           </Marker>
         </Example>
-        <Example title="Border">
+        <Example title="Border" canvas>
           <Marker variant="border">
             <MarkerContent>Earlier messages</MarkerContent>
           </Marker>
@@ -34,7 +34,7 @@ export default function MarkerDocs() {
       </Section>
 
       <Section title="With content">
-        <Example title="With icon">
+        <Example title="With icon" canvas>
           <Marker>
             <MarkerIcon>
               <HugeiconsIcon icon={CheckmarkCircle02Icon} strokeWidth={2} />
@@ -42,7 +42,7 @@ export default function MarkerDocs() {
             <MarkerContent>The task is complete.</MarkerContent>
           </Marker>
         </Example>
-        <Example title="Separator with icon">
+        <Example title="Separator with icon" canvas>
           <Marker variant="separator">
             <MarkerIcon>
               <HugeiconsIcon icon={Calendar03Icon} strokeWidth={2} />
@@ -50,7 +50,7 @@ export default function MarkerDocs() {
             <MarkerContent>1 November</MarkerContent>
           </Marker>
         </Example>
-        <Example title="With link">
+        <Example title="With link" canvas>
           <Marker>
             <MarkerContent>
               Alex joined the chat. <a href="#/marker">Show profile</a>

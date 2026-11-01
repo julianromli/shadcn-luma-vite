@@ -57,6 +57,7 @@ export default function SidebarDocs() {
             key={variant}
             title={variant}
             vars={{ variant }}
+            canvas
             className="block p-0"
           >
             <SidebarProvider className="relative h-96 min-h-0 overflow-hidden">
@@ -172,7 +173,7 @@ export default function SidebarDocs() {
         title="Menu button states"
         description="Hover, focus and active are forced so that you can compare them."
       >
-        <Example title="Default">
+        <Example title="Default" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -220,7 +221,7 @@ export default function SidebarDocs() {
             </SidebarMenu>
           </SidebarProvider>
         </Example>
-        <Example title="Current page">
+        <Example title="Current page" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -247,7 +248,7 @@ export default function SidebarDocs() {
       </Section>
 
       <Section title="Menu button variants and sizes">
-        <Example title="Outline">
+        <Example title="Outline" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -259,7 +260,7 @@ export default function SidebarDocs() {
             </SidebarMenu>
           </SidebarProvider>
         </Example>
-        <Example title="Small">
+        <Example title="Small" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -271,7 +272,7 @@ export default function SidebarDocs() {
             </SidebarMenu>
           </SidebarProvider>
         </Example>
-        <Example title="Large">
+        <Example title="Large" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -293,7 +294,7 @@ export default function SidebarDocs() {
       </Section>
 
       <Section title="Menu parts">
-        <Example title="Group with action">
+        <Example title="Group with action" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarGroup>
               <SidebarGroupLabel>Projects</SidebarGroupLabel>
@@ -312,7 +313,7 @@ export default function SidebarDocs() {
             </SidebarGroup>
           </SidebarProvider>
         </Example>
-        <Example title="Badge and action">
+        <Example title="Badge and action" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -334,7 +335,7 @@ export default function SidebarDocs() {
             </SidebarMenu>
           </SidebarProvider>
         </Example>
-        <Example title="Sub menu">
+        <Example title="Sub menu" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -363,7 +364,7 @@ export default function SidebarDocs() {
             </SidebarMenu>
           </SidebarProvider>
         </Example>
-        <Example title="Loading">
+        <Example title="Loading" canvas>
           <SidebarProvider className="min-h-0 w-56">
             <SidebarMenu>
               <SidebarMenuItem>

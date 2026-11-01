@@ -17,17 +17,22 @@ export default function ToggleDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Toggle aria-label="Bold">
             <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
           </Toggle>
         </Example>
-        <Example title="Outline">
+        <Example title="On" canvas>
+          <Toggle defaultPressed aria-label="Bold">
+            <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
+          </Toggle>
+        </Example>
+        <Example title="Outline" canvas>
           <Toggle variant="outline" aria-label="Italic">
             <HugeiconsIcon icon={TextItalicIcon} strokeWidth={2} />
           </Toggle>
         </Example>
-        <Example title="With text">
+        <Example title="With text" canvas>
           <Toggle variant="outline">
             <HugeiconsIcon
               icon={TextItalicIcon}
@@ -74,7 +79,7 @@ export default function ToggleDocs() {
       ))}
 
       <Section title="Sizes">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Toggle size="sm" variant="outline" aria-label="Bold">
             <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
           </Toggle>
@@ -84,7 +89,7 @@ export default function ToggleDocs() {
             <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
           </Toggle>
         </Example>
-        <Example title="Large">
+        <Example title="Large" canvas>
           <Toggle size="lg" variant="outline" aria-label="Bold">
             <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
           </Toggle>

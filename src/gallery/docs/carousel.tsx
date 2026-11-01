@@ -20,7 +20,7 @@ export default function CarouselDocs() {
   return (
     <>
       <Section title="Orientation" columns={2}>
-        <Example title="Horizontal" className="px-16">
+        <Example title="Horizontal" canvas className="px-16">
           <Carousel className="w-full max-w-xs">
             <CarouselContent>
               <CarouselItem>
@@ -49,7 +49,7 @@ export default function CarouselDocs() {
             <CarouselNext />
           </Carousel>
         </Example>
-        <Example title="Vertical" className="py-20">
+        <Example title="Vertical" canvas className="py-20">
           <Carousel orientation="vertical" className="w-full max-w-xs">
             <CarouselContent className="h-48">
               <CarouselItem>
@@ -75,7 +75,7 @@ export default function CarouselDocs() {
       </Section>
 
       <Section title="Options" columns={2}>
-        <Example title="Several slides in view" className="px-16">
+        <Example title="Several slides in view" canvas className="px-16">
           <Carousel opts={{ align: "start" }} className="w-full max-w-sm">
             <CarouselContent>
               <CarouselItem className="basis-1/3">

@@ -28,22 +28,22 @@ export default function BadgeDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Badge>Badge</Badge>
         </Example>
-        <Example title="Secondary">
+        <Example title="Secondary" canvas>
           <Badge variant="secondary">Secondary</Badge>
         </Example>
-        <Example title="Destructive">
+        <Example title="Destructive" canvas>
           <Badge variant="destructive">Destructive</Badge>
         </Example>
-        <Example title="Outline">
+        <Example title="Outline" canvas>
           <Badge variant="outline">Outline</Badge>
         </Example>
-        <Example title="Ghost">
+        <Example title="Ghost" canvas>
           <Badge variant="ghost">Ghost</Badge>
         </Example>
-        <Example title="Link">
+        <Example title="Link" canvas>
           <Badge variant="link">Link</Badge>
         </Example>
       </Section>
@@ -78,7 +78,7 @@ export default function BadgeDocs() {
       ))}
 
       <Section title="With content">
-        <Example title="Icon at start">
+        <Example title="Icon at start" canvas>
           <Badge variant="secondary">
             <HugeiconsIcon
               icon={CheckmarkCircle02Icon}
@@ -88,7 +88,7 @@ export default function BadgeDocs() {
             Verified
           </Badge>
         </Example>
-        <Example title="Icon at end">
+        <Example title="Icon at end" canvas>
           <Badge variant="outline">
             Open
             <HugeiconsIcon
@@ -104,7 +104,7 @@ export default function BadgeDocs() {
             Syncing
           </Badge>
         </Example>
-        <Example title="Count">
+        <Example title="Count" canvas>
           <Badge className="h-5 min-w-5 px-1 tabular-nums">8</Badge>
           <Badge variant="destructive" className="h-5 min-w-5 px-1 tabular-nums">
             99+

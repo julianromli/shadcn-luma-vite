@@ -135,13 +135,17 @@ export default function ComboboxDocs() {
   return (
     <>
       <Section title="Examples" columns={2}>
-        <Example title="Default" source="ComboboxDemo">
+        <Example title="Default" source="ComboboxDemo" canvas>
           <ComboboxDemo />
         </Example>
-        <Example title="With clear button" source="ComboboxClearDemo">
+        <Example title="With clear button" source="ComboboxClearDemo" canvas>
           <ComboboxClearDemo />
         </Example>
-        <Example title="More than one value" source="ComboboxMultipleDemo">
+        <Example
+          title="More than one value"
+          source="ComboboxMultipleDemo"
+          canvas
+        >
           <ComboboxMultipleDemo />
         </Example>
       </Section>

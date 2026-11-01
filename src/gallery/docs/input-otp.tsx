@@ -18,7 +18,7 @@ export const meta: DocMeta = {
 export default function InputOTPDocs() {
   return (
     <Section title="Examples" columns={2}>
-      <Example title="Default">
+      <Example title="Default" canvas>
         <InputOTP maxLength={6}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -30,7 +30,7 @@ export default function InputOTPDocs() {
           </InputOTPGroup>
         </InputOTP>
       </Example>
-      <Example title="With separator">
+      <Example title="With separator" canvas>
         <InputOTP maxLength={6}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -45,7 +45,7 @@ export default function InputOTPDocs() {
           </InputOTPGroup>
         </InputOTP>
       </Example>
-      <Example title="With value">
+      <Example title="With value" canvas>
         <InputOTP maxLength={4} defaultValue="1234">
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -55,7 +55,7 @@ export default function InputOTPDocs() {
           </InputOTPGroup>
         </InputOTP>
       </Example>
-      <Example title="Digits only">
+      <Example title="Digits only" canvas>
         <InputOTP maxLength={4} pattern={REGEXP_ONLY_DIGITS}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />

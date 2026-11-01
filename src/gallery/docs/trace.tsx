@@ -31,7 +31,7 @@ export default function TraceDocs() {
   return (
     <>
       <Section title="Status">
-        <Example title="Done">
+        <Example title="Done" canvas>
           <Trace>
             <TraceLine>
               <TraceIcon>
@@ -42,7 +42,7 @@ export default function TraceDocs() {
             </TraceLine>
           </Trace>
         </Example>
-        <Example title="Running">
+        <Example title="Running" canvas>
           <Trace>
             <TraceLine status="running">
               <TraceIcon>
@@ -52,7 +52,7 @@ export default function TraceDocs() {
             </TraceLine>
           </Trace>
         </Example>
-        <Example title="Pending">
+        <Example title="Pending" canvas>
           <Trace>
             <TraceLine status="pending">
               <TraceIcon>
@@ -62,7 +62,7 @@ export default function TraceDocs() {
             </TraceLine>
           </Trace>
         </Example>
-        <Example title="Error">
+        <Example title="Error" canvas>
           <Trace>
             <TraceLine status="error">
               <TraceIcon>
@@ -117,7 +117,7 @@ export default function TraceDocs() {
       </Section>
 
       <Section title="Collapsible" columns={2}>
-        <Example title="Closed" className="items-start justify-start">
+        <Example title="Closed" canvas className="items-start justify-start">
           <Trace>
             <TraceCollapsible>
               <TraceCollapsibleTrigger>
@@ -131,7 +131,7 @@ export default function TraceDocs() {
             </TraceCollapsible>
           </Trace>
         </Example>
-        <Example title="Open" className="items-start justify-start">
+        <Example title="Open" canvas className="items-start justify-start">
           <Trace>
             <TraceCollapsible defaultOpen>
               <TraceCollapsibleTrigger>
@@ -148,7 +148,7 @@ export default function TraceDocs() {
       </Section>
 
       <Section title="Steps" columns={1}>
-        <Example title="Full trace" className="justify-start">
+        <Example title="Full trace" canvas className="justify-start">
           <Trace>
             <TraceLine>
               <TraceIcon>

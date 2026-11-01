@@ -32,10 +32,13 @@ const canvasConfig = {
 // Below this zoom, frames show only their name.
 const LOW_DETAIL_SCALE = 0.2
 
-const columns = CATEGORIES.map((category) => ({
-  category,
-  items: docs.filter((doc) => doc.category === category),
-})).filter((column) => column.items.length)
+// Foundations (the Motion page) has no components, so it is not shown.
+const columns = CATEGORIES.filter((category) => category !== "Foundations")
+  .map((category) => ({
+    category,
+    items: docs.filter((doc) => doc.category === category),
+  }))
+  .filter((column) => column.items.length)
 
 export function CanvasPage() {
   const settings = useDialKitController("Canvas", canvasConfig, {

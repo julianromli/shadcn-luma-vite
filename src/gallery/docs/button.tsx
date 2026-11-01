@@ -30,22 +30,22 @@ export default function ButtonDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Button>Button</Button>
         </Example>
-        <Example title="Outline">
+        <Example title="Outline" canvas>
           <Button variant="outline">Button</Button>
         </Example>
-        <Example title="Secondary">
+        <Example title="Secondary" canvas>
           <Button variant="secondary">Button</Button>
         </Example>
-        <Example title="Ghost">
+        <Example title="Ghost" canvas>
           <Button variant="ghost">Button</Button>
         </Example>
-        <Example title="Destructive">
+        <Example title="Destructive" canvas>
           <Button variant="destructive">Delete</Button>
         </Example>
-        <Example title="Link">
+        <Example title="Link" canvas>
           <Button variant="link">Button</Button>
         </Example>
       </Section>
@@ -82,19 +82,19 @@ export default function ButtonDocs() {
       ))}
 
       <Section title="Sizes">
-        <Example title="Extra small">
+        <Example title="Extra small" canvas>
           <Button size="xs">Button</Button>
         </Example>
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Button size="sm">Button</Button>
         </Example>
         <Example title="Default">
           <Button>Button</Button>
         </Example>
-        <Example title="Large">
+        <Example title="Large" canvas>
           <Button size="lg">Button</Button>
         </Example>
-        <Example title="Icon">
+        <Example title="Icon" canvas>
           <Button size="icon-xs" variant="outline" aria-label="Add">
             <HugeiconsIcon icon={PlusSignIcon} strokeWidth={2} />
           </Button>
@@ -111,7 +111,7 @@ export default function ButtonDocs() {
       </Section>
 
       <Section title="With content">
-        <Example title="Icon at start">
+        <Example title="Icon at start" canvas>
           <Button>
             <HugeiconsIcon
               icon={PlusSignIcon}
@@ -121,7 +121,7 @@ export default function ButtonDocs() {
             New project
           </Button>
         </Example>
-        <Example title="Icon at end">
+        <Example title="Icon at end" canvas>
           <Button variant="outline">
             Continue
             <HugeiconsIcon
@@ -137,7 +137,7 @@ export default function ButtonDocs() {
             Saving
           </Button>
         </Example>
-        <Example title="Destructive with icon">
+        <Example title="Destructive with icon" canvas>
           <Button variant="destructive">
             <HugeiconsIcon
               icon={Delete02Icon}
@@ -147,7 +147,7 @@ export default function ButtonDocs() {
             Delete
           </Button>
         </Example>
-        <Example title="As a link">
+        <Example title="As a link" canvas>
           <Button render={<a href="#/button" />} nativeButton={false}>
             Go to page
           </Button>

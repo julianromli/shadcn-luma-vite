@@ -105,6 +105,7 @@ export default function MessageScrollerDocs() {
         <Example
           title="Chat with scroll button"
           source="MessageScrollerDemo"
+          canvas
           className="items-stretch"
         >
           <MessageScrollerDemo />
@@ -115,7 +116,7 @@ export default function MessageScrollerDocs() {
         description="This list starts at the top. It has a button for each direction."
         columns={1}
       >
-        <Example title="Start position" source="ScrollToStartDemo">
+        <Example title="Start position" canvas source="ScrollToStartDemo">
           <ScrollToStartDemo />
         </Example>
       </Section>

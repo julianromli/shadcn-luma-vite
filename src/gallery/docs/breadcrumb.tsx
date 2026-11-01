@@ -30,7 +30,7 @@ export default function BreadcrumbDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -47,7 +47,7 @@ export default function BreadcrumbDocs() {
             </BreadcrumbList>
           </Breadcrumb>
         </Example>
-        <Example title="With icon">
+        <Example title="With icon" canvas>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -66,7 +66,7 @@ export default function BreadcrumbDocs() {
             </BreadcrumbList>
           </Breadcrumb>
         </Example>
-        <Example title="Collapsed">
+        <Example title="Collapsed" canvas>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -87,7 +87,7 @@ export default function BreadcrumbDocs() {
             </BreadcrumbList>
           </Breadcrumb>
         </Example>
-        <Example title="With menu">
+        <Example title="With menu" canvas>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -113,7 +113,7 @@ export default function BreadcrumbDocs() {
             </BreadcrumbList>
           </Breadcrumb>
         </Example>
-        <Example title="Custom separator">
+        <Example title="Custom separator" canvas>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>

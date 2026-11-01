@@ -33,7 +33,7 @@ export default function AttachmentDocs() {
   return (
     <>
       <Section title="States">
-        <Example title="Done">
+        <Example title="Done" canvas>
           <Attachment>
             <AttachmentMedia>
               <HugeiconsIcon icon={Pdf02Icon} strokeWidth={2} />
@@ -49,7 +49,7 @@ export default function AttachmentDocs() {
             </AttachmentActions>
           </Attachment>
         </Example>
-        <Example title="Idle">
+        <Example title="Idle" canvas>
           <Attachment state="idle">
             <AttachmentMedia>
               <HugeiconsIcon icon={File02Icon} strokeWidth={2} />
@@ -60,7 +60,7 @@ export default function AttachmentDocs() {
             </AttachmentContent>
           </Attachment>
         </Example>
-        <Example title="Uploading">
+        <Example title="Uploading" canvas>
           <Attachment state="uploading">
             <AttachmentMedia>
               <Spinner />
@@ -71,7 +71,7 @@ export default function AttachmentDocs() {
             </AttachmentContent>
           </Attachment>
         </Example>
-        <Example title="Processing">
+        <Example title="Processing" canvas>
           <Attachment state="processing">
             <AttachmentMedia>
               <Spinner />
@@ -82,7 +82,7 @@ export default function AttachmentDocs() {
             </AttachmentContent>
           </Attachment>
         </Example>
-        <Example title="Error">
+        <Example title="Error" canvas>
           <Attachment state="error">
             <AttachmentMedia>
               <HugeiconsIcon icon={Alert02Icon} strokeWidth={2} />
@@ -154,7 +154,7 @@ export default function AttachmentDocs() {
             </AttachmentContent>
           </Attachment>
         </Example>
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Attachment size="sm">
             <AttachmentMedia>
               <HugeiconsIcon icon={File02Icon} strokeWidth={2} />
@@ -165,7 +165,7 @@ export default function AttachmentDocs() {
             </AttachmentContent>
           </Attachment>
         </Example>
-        <Example title="Extra small">
+        <Example title="Extra small" canvas>
           <Attachment size="xs">
             <AttachmentMedia>
               <HugeiconsIcon icon={File02Icon} strokeWidth={2} />
@@ -178,7 +178,7 @@ export default function AttachmentDocs() {
       </Section>
 
       <Section title="Orientation and media">
-        <Example title="Vertical">
+        <Example title="Vertical" canvas>
           <Attachment orientation="vertical">
             <AttachmentMedia>
               <HugeiconsIcon icon={Pdf02Icon} strokeWidth={2} />
@@ -189,7 +189,7 @@ export default function AttachmentDocs() {
             </AttachmentContent>
           </Attachment>
         </Example>
-        <Example title="Image">
+        <Example title="Image" canvas>
           <Attachment>
             <AttachmentMedia variant="image">
               <img src="https://github.com/shadcn.png" alt="" />
@@ -200,7 +200,7 @@ export default function AttachmentDocs() {
             </AttachmentContent>
           </Attachment>
         </Example>
-        <Example title="Image only, vertical">
+        <Example title="Image only, vertical" canvas>
           <Attachment orientation="vertical">
             <AttachmentMedia variant="image">
               <img src="https://github.com/shadcn.png" alt="photo.jpg" />
@@ -215,7 +215,7 @@ export default function AttachmentDocs() {
       </Section>
 
       <Section title="Group" columns={1}>
-        <Example title="Attachment group">
+        <Example title="Attachment group" canvas>
           <AttachmentGroup className="w-full">
             <Attachment>
               <AttachmentMedia>

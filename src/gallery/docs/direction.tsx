@@ -21,7 +21,7 @@ export default function DirectionDocs() {
         description="In RTL, the first tab is on the right. The arrow keys move in the reading direction."
         columns={2}
       >
-        <Example title="Left to right">
+        <Example title="Left to right" canvas>
           <DirectionProvider direction="ltr">
             <div dir="ltr">
               <Tabs defaultValue="account">
@@ -39,7 +39,7 @@ export default function DirectionDocs() {
             </div>
           </DirectionProvider>
         </Example>
-        <Example title="Right to left">
+        <Example title="Right to left" canvas>
           <DirectionProvider direction="rtl">
             <div dir="rtl">
               <Tabs defaultValue="account">
@@ -64,14 +64,14 @@ export default function DirectionDocs() {
         description="In RTL, the slider starts on the right."
         columns={2}
       >
-        <Example title="Left to right">
+        <Example title="Left to right" canvas>
           <DirectionProvider direction="ltr">
             <div dir="ltr" className="w-full max-w-xs">
               <Slider defaultValue={[30]} max={100} aria-label="Volume" />
             </div>
           </DirectionProvider>
         </Example>
-        <Example title="Right to left">
+        <Example title="Right to left" canvas>
           <DirectionProvider direction="rtl">
             <div dir="rtl" className="w-full max-w-xs">
               <Slider defaultValue={[30]} max={100} aria-label="الصوت" />
@@ -81,7 +81,7 @@ export default function DirectionDocs() {
       </Section>
 
       <Section title="Radio group" columns={2}>
-        <Example title="Left to right">
+        <Example title="Left to right" canvas>
           <DirectionProvider direction="ltr">
             <RadioGroup dir="ltr" defaultValue="email">
               <div className="flex items-center gap-2">
@@ -95,7 +95,7 @@ export default function DirectionDocs() {
             </RadioGroup>
           </DirectionProvider>
         </Example>
-        <Example title="Right to left">
+        <Example title="Right to left" canvas>
           <DirectionProvider direction="rtl">
             <RadioGroup dir="rtl" defaultValue="email">
               <div className="flex items-center gap-2">

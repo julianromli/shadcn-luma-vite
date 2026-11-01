@@ -25,7 +25,7 @@ export default function SheetDocs() {
   return (
     <>
       <Section title="Sides">
-        <Example title="Right">
+        <Example title="Right" canvas>
           <Sheet>
             <SheetTrigger render={<Button variant="outline" />}>
               Open right
@@ -56,7 +56,7 @@ export default function SheetDocs() {
             </SheetContent>
           </Sheet>
         </Example>
-        <Example title="Left">
+        <Example title="Left" canvas>
           <Sheet>
             <SheetTrigger render={<Button variant="outline" />}>
               Open left
@@ -69,7 +69,7 @@ export default function SheetDocs() {
             </SheetContent>
           </Sheet>
         </Example>
-        <Example title="Top">
+        <Example title="Top" canvas>
           <Sheet>
             <SheetTrigger render={<Button variant="outline" />}>
               Open top
@@ -84,7 +84,7 @@ export default function SheetDocs() {
             </SheetContent>
           </Sheet>
         </Example>
-        <Example title="Bottom">
+        <Example title="Bottom" canvas>
           <Sheet>
             <SheetTrigger render={<Button variant="outline" />}>
               Open bottom
@@ -105,7 +105,7 @@ export default function SheetDocs() {
       </Section>
 
       <Section title="Options">
-        <Example title="No close button">
+        <Example title="No close button" canvas>
           <Sheet>
             <SheetTrigger render={<Button variant="outline" />}>
               Open sheet

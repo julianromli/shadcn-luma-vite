@@ -72,7 +72,7 @@ function OptionsContextMenu() {
 export default function ContextMenuDocs() {
   return (
     <Section title="Variants" columns={2}>
-      <Example title="Default">
+      <Example title="Default" canvas>
         <ContextMenu>
           <ContextMenuTrigger className="flex h-36 w-full items-center justify-center rounded-2xl border border-dashed text-sm text-muted-foreground">
             Right-click here
@@ -84,7 +84,7 @@ export default function ContextMenuDocs() {
           </ContextMenuContent>
         </ContextMenu>
       </Example>
-      <Example title="Icons, shortcuts and submenu">
+      <Example title="Icons, shortcuts and submenu" canvas>
         <ContextMenu>
           <ContextMenuTrigger className="flex h-36 w-full items-center justify-center rounded-2xl border border-dashed text-sm text-muted-foreground">
             Right-click here
@@ -120,7 +120,7 @@ export default function ContextMenuDocs() {
           </ContextMenuContent>
         </ContextMenu>
       </Example>
-      <Example title="Checkbox and radio items" source="OptionsContextMenu">
+      <Example title="Checkbox and radio items" source="OptionsContextMenu" canvas>
         <OptionsContextMenu />
       </Example>
     </Section>

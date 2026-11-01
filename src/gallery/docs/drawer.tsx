@@ -23,7 +23,7 @@ export default function DrawerDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Drawer>
             <DrawerTrigger render={<Button variant="outline" />}>
               Open drawer
@@ -44,7 +44,7 @@ export default function DrawerDocs() {
             </DrawerContent>
           </Drawer>
         </Example>
-        <Example title="With swipe handle">
+        <Example title="With swipe handle" canvas>
           <Drawer showSwipeHandle>
             <DrawerTrigger render={<Button variant="outline" />}>
               Open drawer
@@ -87,7 +87,7 @@ export default function DrawerDocs() {
       </Section>
 
       <Section title="Swipe directions">
-        <Example title="Down">
+        <Example title="Down" canvas>
           <Drawer swipeDirection="down">
             <DrawerTrigger render={<Button variant="outline" />}>
               From bottom
@@ -100,7 +100,7 @@ export default function DrawerDocs() {
             </DrawerContent>
           </Drawer>
         </Example>
-        <Example title="Up">
+        <Example title="Up" canvas>
           <Drawer swipeDirection="up">
             <DrawerTrigger render={<Button variant="outline" />}>
               From top
@@ -113,7 +113,7 @@ export default function DrawerDocs() {
             </DrawerContent>
           </Drawer>
         </Example>
-        <Example title="Left">
+        <Example title="Left" canvas>
           <Drawer swipeDirection="left">
             <DrawerTrigger render={<Button variant="outline" />}>
               From left
@@ -126,7 +126,7 @@ export default function DrawerDocs() {
             </DrawerContent>
           </Drawer>
         </Example>
-        <Example title="Right">
+        <Example title="Right" canvas>
           <Drawer swipeDirection="right">
             <DrawerTrigger render={<Button variant="outline" />}>
               From right

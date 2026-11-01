@@ -48,7 +48,7 @@ export default function CollapsibleDocs() {
   return (
     <>
       <Section title="States">
-        <Example title="Closed">
+        <Example title="Closed" canvas>
           <Collapsible className="flex w-full max-w-xs flex-col gap-2">
             <CollapsibleTrigger render={<Button variant="outline" />}>
               Show details
@@ -58,7 +58,7 @@ export default function CollapsibleDocs() {
             </CollapsibleContent>
           </Collapsible>
         </Example>
-        <Example title="Open">
+        <Example title="Open" canvas>
           <Collapsible defaultOpen className="flex w-full max-w-xs flex-col gap-2">
             <CollapsibleTrigger render={<Button variant="outline" />}>
               Show details

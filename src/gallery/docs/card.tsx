@@ -23,7 +23,7 @@ export default function CardDocs() {
   return (
     <>
       <Section title="Sizes" columns={2}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Card className="w-full max-w-sm">
             <CardHeader>
               <CardTitle>Project settings</CardTitle>
@@ -37,7 +37,7 @@ export default function CardDocs() {
             </CardFooter>
           </Card>
         </Example>
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Card size="sm" className="w-full max-w-sm">
             <CardHeader>
               <CardTitle>Project settings</CardTitle>
@@ -54,7 +54,7 @@ export default function CardDocs() {
       </Section>
 
       <Section title="Composition" columns={2}>
-        <Example title="With action">
+        <Example title="With action" canvas>
           <Card className="w-full max-w-sm">
             <CardHeader>
               <CardTitle>Notifications</CardTitle>
@@ -67,7 +67,7 @@ export default function CardDocs() {
             </CardHeader>
           </Card>
         </Example>
-        <Example title="Form">
+        <Example title="Form" canvas>
           <Card className="w-full max-w-sm">
             <CardHeader>
               <CardTitle>Sign in</CardTitle>
@@ -83,7 +83,7 @@ export default function CardDocs() {
             </CardFooter>
           </Card>
         </Example>
-        <Example title="With borders">
+        <Example title="With borders" canvas>
           <Card className="w-full max-w-sm">
             <CardHeader className="border-b">
               <CardTitle>Invoice</CardTitle>
@@ -99,7 +99,7 @@ export default function CardDocs() {
             </CardFooter>
           </Card>
         </Example>
-        <Example title="With image">
+        <Example title="With image" canvas>
           <Card className="w-full max-w-sm">
             <div className="aspect-video bg-linear-to-br from-primary/30 to-primary/5" />
             <CardHeader>

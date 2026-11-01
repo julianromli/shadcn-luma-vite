@@ -29,7 +29,7 @@ export default function EmptyDocs() {
   return (
     <>
       <Section title="Media variants" columns={2}>
-        <Example title="Icon">
+        <Example title="Icon" canvas>
           <Empty>
             <EmptyHeader>
               <EmptyMedia variant="icon">
@@ -45,7 +45,7 @@ export default function EmptyDocs() {
             </EmptyContent>
           </Empty>
         </Example>
-        <Example title="Default (custom media)">
+        <Example title="Default (custom media)" canvas>
           <Empty>
             <EmptyHeader>
               <EmptyMedia>
@@ -63,7 +63,7 @@ export default function EmptyDocs() {
       </Section>
 
       <Section title="Composition" columns={2}>
-        <Example title="Dashed border">
+        <Example title="Dashed border" canvas>
           <Empty className="border">
             <EmptyHeader>
               <EmptyMedia variant="icon">
@@ -79,7 +79,7 @@ export default function EmptyDocs() {
             </EmptyContent>
           </Empty>
         </Example>
-        <Example title="With link">
+        <Example title="With link" canvas>
           <Empty>
             <EmptyHeader>
               <EmptyMedia variant="icon">

@@ -101,7 +101,7 @@ export default function DropdownMenuDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Open menu
@@ -113,7 +113,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Icons and shortcuts">
+        <Example title="Icons and shortcuts" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               My account
@@ -146,7 +146,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Destructive and disabled items">
+        <Example title="Destructive and disabled items" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
@@ -167,7 +167,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Submenu">
+        <Example title="Submenu" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Share
@@ -189,7 +189,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Inset items">
+        <Example title="Inset items" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Open menu
@@ -203,16 +203,16 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Checkbox items" source="CheckboxMenu">
+        <Example title="Checkbox items" source="CheckboxMenu" canvas>
           <CheckboxMenu />
         </Example>
-        <Example title="Radio items" source="RadioMenu">
+        <Example title="Radio items" source="RadioMenu" canvas>
           <RadioMenu />
         </Example>
       </Section>
 
       <Section title="Placement">
-        <Example title="Bottom, start">
+        <Example title="Bottom, start" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Bottom start
@@ -223,7 +223,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Bottom, end">
+        <Example title="Bottom, end" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Bottom end
@@ -234,7 +234,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Top">
+        <Example title="Top" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Top
@@ -245,7 +245,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Right">
+        <Example title="Right" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Right
@@ -256,7 +256,7 @@ export default function DropdownMenuDocs() {
             </DropdownMenuContent>
           </DropdownMenu>
         </Example>
-        <Example title="Left">
+        <Example title="Left" canvas>
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" />}>
               Left

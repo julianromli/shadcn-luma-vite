@@ -13,14 +13,14 @@ export const meta: DocMeta = {
 export default function LabelDocs() {
   return (
     <Section title="Examples">
-      <Example title="Default">
+      <Example title="Default" canvas>
         <Label>Email</Label>
       </Example>
-      <Example title="With input" className="flex-col items-stretch">
+      <Example title="With input" className="flex-col items-stretch" canvas>
         <Label htmlFor="label-email">Email</Label>
         <Input id="label-email" placeholder="you@example.com" />
       </Example>
-      <Example title="With checkbox">
+      <Example title="With checkbox" canvas>
         <Label>
           <Checkbox />
           Accept the terms

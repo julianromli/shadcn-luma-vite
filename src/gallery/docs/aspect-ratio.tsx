@@ -11,7 +11,7 @@ export const meta: DocMeta = {
 export default function AspectRatioDocs() {
   return (
     <Section title="Ratios">
-      <Example title="16:9">
+      <Example title="16:9" canvas>
         <div className="w-full max-w-xs">
           <AspectRatio
             ratio={16 / 9}
@@ -19,7 +19,7 @@ export default function AspectRatioDocs() {
           />
         </div>
       </Example>
-      <Example title="4:3">
+      <Example title="4:3" canvas>
         <div className="w-full max-w-xs">
           <AspectRatio
             ratio={4 / 3}
@@ -27,7 +27,7 @@ export default function AspectRatioDocs() {
           />
         </div>
       </Example>
-      <Example title="1:1">
+      <Example title="1:1" canvas>
         <div className="w-full max-w-40">
           <AspectRatio
             ratio={1}
@@ -35,7 +35,7 @@ export default function AspectRatioDocs() {
           />
         </div>
       </Example>
-      <Example title="9:16">
+      <Example title="9:16" canvas>
         <div className="w-full max-w-28">
           <AspectRatio
             ratio={9 / 16}
@@ -43,7 +43,7 @@ export default function AspectRatioDocs() {
           />
         </div>
       </Example>
-      <Example title="With content">
+      <Example title="With content" canvas>
         <div className="w-full max-w-xs">
           <AspectRatio
             ratio={16 / 9}

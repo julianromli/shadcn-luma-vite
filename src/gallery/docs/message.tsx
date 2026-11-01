@@ -22,7 +22,7 @@ export default function MessageDocs() {
   return (
     <>
       <Section title="Alignment" columns={2}>
-        <Example title="Start">
+        <Example title="Start" canvas>
           <Message>
             <MessageAvatar>
               <Avatar>
@@ -36,7 +36,7 @@ export default function MessageDocs() {
             </MessageContent>
           </Message>
         </Example>
-        <Example title="End">
+        <Example title="End" canvas>
           <Message align="end">
             <MessageAvatar>
               <Avatar>
@@ -53,7 +53,7 @@ export default function MessageDocs() {
       </Section>
 
       <Section title="Parts" columns={2}>
-        <Example title="Header and footer">
+        <Example title="Header and footer" canvas>
           <Message>
             <MessageAvatar>
               <Avatar>
@@ -69,7 +69,7 @@ export default function MessageDocs() {
             </MessageContent>
           </Message>
         </Example>
-        <Example title="Ghost bubble">
+        <Example title="Ghost bubble" canvas>
           <Message>
             <MessageContent>
               <MessageHeader>Assistant</MessageHeader>
@@ -81,7 +81,7 @@ export default function MessageDocs() {
             </MessageContent>
           </Message>
         </Example>
-        <Example title="More than one bubble">
+        <Example title="More than one bubble" canvas>
           <Message align="end">
             <MessageContent>
               <Bubble>
@@ -97,7 +97,7 @@ export default function MessageDocs() {
       </Section>
 
       <Section title="Conversation" columns={1}>
-        <Example title="Message group">
+        <Example title="Message group" canvas>
           <MessageGroup className="w-full max-w-lg gap-4">
             <Message align="end">
               <MessageContent>

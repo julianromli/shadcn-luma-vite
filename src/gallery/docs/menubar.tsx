@@ -108,7 +108,7 @@ export default function MenubarDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Menubar>
             <MenubarMenu>
               <MenubarTrigger>File</MenubarTrigger>
@@ -127,7 +127,7 @@ export default function MenubarDocs() {
             </MenubarMenu>
           </Menubar>
         </Example>
-        <Example title="Full example" source="AppMenubar">
+        <Example title="Full example" source="AppMenubar" canvas>
           <AppMenubar />
         </Example>
       </Section>

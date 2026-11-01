@@ -12,16 +12,16 @@ export default function SliderDocs() {
   return (
     <>
       <Section title="Examples">
-        <Example title="Single value">
+        <Example title="Single value" canvas>
           <Slider defaultValue={[40]} aria-label="Volume" />
         </Example>
-        <Example title="Range">
+        <Example title="Range" canvas>
           <Slider defaultValue={[25, 75]} aria-label="Price" />
         </Example>
-        <Example title="With step">
+        <Example title="With step" canvas>
           <Slider defaultValue={[50]} step={10} aria-label="Volume" />
         </Example>
-        <Example title="Vertical" className="h-48">
+        <Example title="Vertical" className="h-48" canvas>
           <Slider
             defaultValue={[60]}
             orientation="vertical"

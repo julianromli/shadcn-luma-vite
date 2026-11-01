@@ -28,37 +28,37 @@ export default function BubbleDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Bubble>
             <BubbleContent>Hello! How can I help?</BubbleContent>
           </Bubble>
         </Example>
-        <Example title="Secondary">
+        <Example title="Secondary" canvas>
           <Bubble variant="secondary">
             <BubbleContent>Hello! How can I help?</BubbleContent>
           </Bubble>
         </Example>
-        <Example title="Muted">
+        <Example title="Muted" canvas>
           <Bubble variant="muted">
             <BubbleContent>Hello! How can I help?</BubbleContent>
           </Bubble>
         </Example>
-        <Example title="Tinted">
+        <Example title="Tinted" canvas>
           <Bubble variant="tinted">
             <BubbleContent>Hello! How can I help?</BubbleContent>
           </Bubble>
         </Example>
-        <Example title="Outline">
+        <Example title="Outline" canvas>
           <Bubble variant="outline">
             <BubbleContent>Hello! How can I help?</BubbleContent>
           </Bubble>
         </Example>
-        <Example title="Ghost">
+        <Example title="Ghost" canvas>
           <Bubble variant="ghost">
             <BubbleContent>Hello! How can I help?</BubbleContent>
           </Bubble>
         </Example>
-        <Example title="Destructive">
+        <Example title="Destructive" canvas>
           <Bubble variant="destructive">
             <BubbleContent>The message did not send.</BubbleContent>
           </Bubble>
@@ -96,7 +96,7 @@ export default function BubbleDocs() {
       ))}
 
       <Section title="Alignment and reactions" columns={2}>
-        <Example title="Start and end" className="flex-col items-stretch">
+        <Example title="Start and end" canvas className="flex-col items-stretch">
           <BubbleGroup className="w-full">
             <Bubble variant="muted">
               <BubbleContent>Can you send the report?</BubbleContent>
@@ -106,7 +106,7 @@ export default function BubbleDocs() {
             </Bubble>
           </BubbleGroup>
         </Example>
-        <Example title="Reactions" className="flex-col items-stretch py-10">
+        <Example title="Reactions" canvas className="flex-col items-stretch py-10">
           <BubbleGroup className="w-full gap-6">
             <Bubble variant="muted">
               <BubbleContent>The build passed.</BubbleContent>

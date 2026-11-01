@@ -25,7 +25,7 @@ export default function AlertDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Alert>
             <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={2} />
             <AlertTitle>New version available</AlertTitle>
@@ -34,7 +34,7 @@ export default function AlertDocs() {
             </AlertDescription>
           </Alert>
         </Example>
-        <Example title="Destructive">
+        <Example title="Destructive" canvas>
           <Alert variant="destructive">
             <HugeiconsIcon icon={Alert02Icon} strokeWidth={2} />
             <AlertTitle>Payment failed</AlertTitle>
@@ -46,13 +46,13 @@ export default function AlertDocs() {
       </Section>
 
       <Section title="Content" columns={2}>
-        <Example title="Title only">
+        <Example title="Title only" canvas>
           <Alert>
             <HugeiconsIcon icon={CheckmarkCircle02Icon} strokeWidth={2} />
             <AlertTitle>Your changes are saved.</AlertTitle>
           </Alert>
         </Example>
-        <Example title="Without icon">
+        <Example title="Without icon" canvas>
           <Alert>
             <AlertTitle>Scheduled maintenance</AlertTitle>
             <AlertDescription>
@@ -60,7 +60,7 @@ export default function AlertDocs() {
             </AlertDescription>
           </Alert>
         </Example>
-        <Example title="With action">
+        <Example title="With action" canvas>
           <Alert>
             <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={2} />
             <AlertTitle>Update available</AlertTitle>
@@ -70,7 +70,7 @@ export default function AlertDocs() {
             </AlertAction>
           </Alert>
         </Example>
-        <Example title="With link">
+        <Example title="With link" canvas>
           <Alert variant="destructive">
             <HugeiconsIcon icon={Alert02Icon} strokeWidth={2} />
             <AlertTitle>Session expired</AlertTitle>

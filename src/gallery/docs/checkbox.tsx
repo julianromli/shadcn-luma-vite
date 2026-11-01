@@ -16,10 +16,10 @@ export default function CheckboxDocs() {
         title="States"
         description="Focus is forced so that you can compare it. The live examples react to your mouse and keyboard."
       >
-        <Example title="Unchecked">
+        <Example title="Unchecked" canvas>
           <Checkbox aria-label="Accept" />
         </Example>
-        <Example title="Checked">
+        <Example title="Checked" canvas>
           <Checkbox defaultChecked aria-label="Accept" />
         </Example>
         <Example title="Indeterminate">
@@ -46,7 +46,7 @@ export default function CheckboxDocs() {
       </Section>
 
       <Section title="With label">
-        <Example title="Label">
+        <Example title="Label" canvas>
           <Label>
             <Checkbox />
             Accept the terms

@@ -18,7 +18,7 @@ export default function TabsDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Tabs defaultValue="account" className="w-full max-w-sm">
             <TabsList>
               <TabsTrigger value="account">Account</TabsTrigger>
@@ -28,7 +28,7 @@ export default function TabsDocs() {
             <TabsContent value="password">Change your password.</TabsContent>
           </Tabs>
         </Example>
-        <Example title="Line">
+        <Example title="Line" canvas>
           <Tabs defaultValue="account" className="w-full max-w-sm">
             <TabsList variant="line">
               <TabsTrigger value="account">Account</TabsTrigger>
@@ -41,7 +41,7 @@ export default function TabsDocs() {
       </Section>
 
       <Section title="Orientation" columns={2}>
-        <Example title="Vertical">
+        <Example title="Vertical" canvas>
           <Tabs defaultValue="account" orientation="vertical" className="w-full max-w-sm">
             <TabsList>
               <TabsTrigger value="account">Account</TabsTrigger>
@@ -53,7 +53,7 @@ export default function TabsDocs() {
             <TabsContent value="billing">Change your plan.</TabsContent>
           </Tabs>
         </Example>
-        <Example title="Vertical line">
+        <Example title="Vertical line" canvas>
           <Tabs defaultValue="account" orientation="vertical" className="w-full max-w-sm">
             <TabsList variant="line">
               <TabsTrigger value="account">Account</TabsTrigger>
@@ -109,7 +109,7 @@ export default function TabsDocs() {
       ))}
 
       <Section title="With icons" columns={2}>
-        <Example title="Icons">
+        <Example title="Icons" canvas>
           <Tabs defaultValue="profile">
             <TabsList>
               <TabsTrigger value="profile">

@@ -19,7 +19,7 @@ export default function ToggleGroupDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <ToggleGroup multiple>
             <ToggleGroupItem value="bold" aria-label="Bold">
               <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
@@ -32,7 +32,7 @@ export default function ToggleGroupDocs() {
             </ToggleGroupItem>
           </ToggleGroup>
         </Example>
-        <Example title="Outline">
+        <Example title="Outline" canvas>
           <ToggleGroup variant="outline" multiple>
             <ToggleGroupItem value="bold" aria-label="Bold">
               <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
@@ -45,7 +45,7 @@ export default function ToggleGroupDocs() {
             </ToggleGroupItem>
           </ToggleGroup>
         </Example>
-        <Example title="Outline, no spacing">
+        <Example title="Outline, no spacing" canvas>
           <ToggleGroup variant="outline" spacing={0} multiple>
             <ToggleGroupItem value="bold" aria-label="Bold">
               <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
@@ -61,14 +61,14 @@ export default function ToggleGroupDocs() {
       </Section>
 
       <Section title="Selection">
-        <Example title="One value">
+        <Example title="One value" canvas>
           <ToggleGroup variant="outline" defaultValue={["left"]}>
             <ToggleGroupItem value="left">Left</ToggleGroupItem>
             <ToggleGroupItem value="center">Center</ToggleGroupItem>
             <ToggleGroupItem value="right">Right</ToggleGroupItem>
           </ToggleGroup>
         </Example>
-        <Example title="More than one value">
+        <Example title="More than one value" canvas>
           <ToggleGroup variant="outline" multiple defaultValue={["bold", "italic"]}>
             <ToggleGroupItem value="bold" aria-label="Bold">
               <HugeiconsIcon icon={TextBoldIcon} strokeWidth={2} />
@@ -81,7 +81,7 @@ export default function ToggleGroupDocs() {
             </ToggleGroupItem>
           </ToggleGroup>
         </Example>
-        <Example title="Vertical">
+        <Example title="Vertical" canvas>
           <ToggleGroup variant="outline" orientation="vertical" defaultValue={["top"]}>
             <ToggleGroupItem value="top">Top</ToggleGroupItem>
             <ToggleGroupItem value="middle">Middle</ToggleGroupItem>
@@ -121,7 +121,7 @@ export default function ToggleGroupDocs() {
       </Section>
 
       <Section title="Sizes">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <ToggleGroup variant="outline" size="sm" defaultValue={["a"]}>
             <ToggleGroupItem value="a">A</ToggleGroupItem>
             <ToggleGroupItem value="b">B</ToggleGroupItem>
@@ -133,7 +133,7 @@ export default function ToggleGroupDocs() {
             <ToggleGroupItem value="b">B</ToggleGroupItem>
           </ToggleGroup>
         </Example>
-        <Example title="Large">
+        <Example title="Large" canvas>
           <ToggleGroup variant="outline" size="lg" defaultValue={["a"]}>
             <ToggleGroupItem value="a">A</ToggleGroupItem>
             <ToggleGroupItem value="b">B</ToggleGroupItem>

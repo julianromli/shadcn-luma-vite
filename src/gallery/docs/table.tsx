@@ -23,7 +23,7 @@ export default function TableDocs() {
   return (
     <>
       <Section title="Default" columns={1}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Table>
             <TableCaption>Your recent invoices.</TableCaption>
             <TableHeader>
@@ -86,7 +86,7 @@ export default function TableDocs() {
             </TableBody>
           </Table>
         </Example>
-        <Example title="Selected">
+        <Example title="Selected" canvas>
           <Table>
             <TableBody>
               <TableRow data-state="selected">

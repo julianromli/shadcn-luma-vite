@@ -116,6 +116,7 @@ The plugin also makes the import block at the top of each page. This block conta
 
 | `<Example>` prop       | Use                                                                 |
 | ---------------------- | ------------------------------------------------------------------- |
+| `canvas`               | Shows the example on the canvas. Mark the default state of each variant, size, value and composition. |
 | `state="hover"`        | Shows the hover look. You can also use `"focus"` or `"active"`.     |
 | `source="FnName"`      | Uses the full `function FnName` from the same file as the snippet. Use it for examples that have state (hooks). |
 | `vars={{ variant }}`   | Puts the real value in place of a loop variable, so `variant={variant}` becomes `variant="outline"`. |
@@ -162,7 +163,13 @@ When the operating system asks for less motion, all transitions and animations g
 
 ## Canvas
 
-Open the canvas from the sidebar (**Open canvas**), or go to `#/canvas`. It shows the page of each component as a frame, in one column for each category.
+Open the canvas from the sidebar (**Open canvas**), or go to `#/canvas`. It shows only the components, with no code. Each component is a frame, in one column for each category. A frame shows the examples that have the `canvas` prop:
+
+- Each variant, size and other prop value, in its default state.
+- Off and on, for controls with a value (Checkbox, Switch, Tabs ...).
+- Composition examples (with an icon, with a label, with a footer ...).
+
+Interaction states (hover, focus, active, disabled, invalid, read-only, loading) are only on the gallery pages. The Motion page is not on the canvas.
 
 | Input | Action |
 | --- | --- |

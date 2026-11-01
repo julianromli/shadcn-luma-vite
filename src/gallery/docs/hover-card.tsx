@@ -22,7 +22,7 @@ export default function HoverCardDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Profile preview">
+        <Example title="Profile preview" canvas>
           <HoverCard>
             <HoverCardTrigger
               href="#/hover-card"
@@ -49,7 +49,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Text link">
+        <Example title="Text link" canvas>
           <p className="text-sm">
             Read the{" "}
             <HoverCard>
@@ -71,7 +71,7 @@ export default function HoverCardDocs() {
       </Section>
 
       <Section title="Sides">
-        <Example title="Top">
+        <Example title="Top" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Top
@@ -81,7 +81,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Right">
+        <Example title="Right" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Right
@@ -91,7 +91,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Bottom">
+        <Example title="Bottom" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Bottom
@@ -101,7 +101,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Left">
+        <Example title="Left" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Left

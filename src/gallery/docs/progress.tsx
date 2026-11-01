@@ -37,22 +37,22 @@ export default function ProgressDocs() {
   return (
     <>
       <Section title="Values">
-        <Example title="Empty">
+        <Example title="Empty" canvas>
           <Progress value={0} className="w-full max-w-xs" aria-label="Progress" />
         </Example>
-        <Example title="Partial">
+        <Example title="Partial" canvas>
           <Progress value={60} className="w-full max-w-xs" aria-label="Progress" />
         </Example>
-        <Example title="Complete">
+        <Example title="Complete" canvas>
           <Progress value={100} className="w-full max-w-xs" aria-label="Progress" />
         </Example>
-        <Example title="Indeterminate">
+        <Example title="Indeterminate" canvas>
           <Progress value={null} className="w-full max-w-xs" aria-label="Loading" />
         </Example>
       </Section>
 
       <Section title="With content">
-        <Example title="Label and value">
+        <Example title="Label and value" canvas>
           <Progress value={45} className="w-full max-w-xs">
             <ProgressLabel>Storage</ProgressLabel>
             <ProgressValue />

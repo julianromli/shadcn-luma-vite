@@ -28,7 +28,7 @@ export default function AlertDialogDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <AlertDialog>
             <AlertDialogTrigger render={<Button variant="outline" />}>
               Show dialog
@@ -48,7 +48,7 @@ export default function AlertDialogDocs() {
             </AlertDialogContent>
           </AlertDialog>
         </Example>
-        <Example title="Small">
+        <Example title="Small" canvas>
           <AlertDialog>
             <AlertDialogTrigger render={<Button variant="outline" />}>
               Show small dialog
@@ -67,7 +67,7 @@ export default function AlertDialogDocs() {
             </AlertDialogContent>
           </AlertDialog>
         </Example>
-        <Example title="With media">
+        <Example title="With media" canvas>
           <AlertDialog>
             <AlertDialogTrigger render={<Button variant="outline" />}>
               Delete project
@@ -91,7 +91,7 @@ export default function AlertDialogDocs() {
             </AlertDialogContent>
           </AlertDialog>
         </Example>
-        <Example title="Small with media">
+        <Example title="Small with media" canvas>
           <AlertDialog>
             <AlertDialogTrigger render={<Button variant="destructive" />}>
               Delete chat

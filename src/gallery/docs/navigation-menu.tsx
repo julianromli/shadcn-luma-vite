@@ -21,7 +21,7 @@ export default function NavigationMenuDocs() {
   return (
     <>
       <Section title="Variants" columns={1}>
-        <Example title="With panels" className="min-h-64 items-start">
+        <Example title="With panels" className="min-h-64 items-start" canvas>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -105,7 +105,7 @@ export default function NavigationMenuDocs() {
             </NavigationMenuList>
           </NavigationMenu>
         </Example>
-        <Example title="Links only">
+        <Example title="Links only" canvas>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
