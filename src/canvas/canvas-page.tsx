@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import { Separator } from "@/components/ui/separator"
 import { Frame, type FrameSize, type PreviewMode } from "@/canvas/frame"
-import { usePanZoom } from "@/canvas/use-pan-zoom"
+import { BACKGROUND_BLEED, usePanZoom } from "@/canvas/use-pan-zoom"
 import { CATEGORIES, docs } from "@/gallery/registry"
 
 const PREVIEW_MODES: { value: PreviewMode; label: string }[] = [
@@ -89,11 +89,12 @@ export function CanvasPage() {
   const mode = previewMode as PreviewMode
 
   const pz = usePanZoom({ x: 48, y: 80, scale: 0.75 })
-  const { view, viewportRef } = pz
-  const layerRef = React.useRef<HTMLDivElement>(null)
+  const { viewportRef, layerRef, backgroundRef, zoomPercent } = pz
+  const lowDetail = zoomPercent < LOW_DETAIL_SCALE * 100
   const [viewport, setViewport] = React.useState<HTMLDivElement | null>(null)
   const [sizes, setSizes] = React.useState<Record<string, FrameSize>>({})
-  const layout = masonry(sizes, gap)
+  // Stable placements, so the memoized cards do not render again.
+  const layout = React.useMemo(() => masonry(sizes, gap), [sizes, gap])
 
   const onMeasure = React.useCallback((slug: string, size: FrameSize) => {
     setSizes((current) => {
@@ -150,9 +151,9 @@ export function CanvasPage() {
       ArrowRight: () => pz.panBy(-step, 0),
       ArrowUp: () => pz.panBy(0, step),
       ArrowDown: () => pz.panBy(0, -step),
-      "+": () => pz.zoomTo(view.scale * 1.25, undefined, true),
-      "=": () => pz.zoomTo(view.scale * 1.25, undefined, true),
-      "-": () => pz.zoomTo(view.scale / 1.25, undefined, true),
+      "+": () => pz.zoomTo(pz.getView().scale * 1.25, undefined, true),
+      "=": () => pz.zoomTo(pz.getView().scale * 1.25, undefined, true),
+      "-": () => pz.zoomTo(pz.getView().scale / 1.25, undefined, true),
       "0": () => pz.zoomTo(1, undefined, true),
       "1": fitAll,
     }
@@ -163,7 +164,6 @@ export function CanvasPage() {
     }
   }
 
-  const backgroundSize = 24 * view.scale
   const backgroundImage =
     background === "dots"
       ? "radial-gradient(circle, var(--border) 1.5px, transparent 1.5px)"
@@ -180,7 +180,6 @@ export function CanvasPage() {
         tabIndex={0}
         role="application"
         aria-label="Component canvas. Drag the background, or hold Space and drag, to pan. Ctrl or Command and scroll to zoom. Arrow keys pan. Plus and minus zoom. 0 zooms to 100%. 1 fits all components."
-        data-panning={pz.panning || undefined}
         onKeyDown={onKeyDown}
         // The viewport is the IntersectionObserver root, so it keeps
         // overflow-hidden. Focus can still scroll it, so reset that.
@@ -188,26 +187,25 @@ export function CanvasPage() {
           event.currentTarget.scrollTop = 0
           event.currentTarget.scrollLeft = 0
         }}
-        className="absolute inset-0 touch-none overflow-hidden outline-none focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:ring-inset data-panning:cursor-grabbing"
-        style={{
-          backgroundImage,
-          backgroundSize: `${backgroundSize}px ${backgroundSize}px`,
-          backgroundPosition: `${view.x}px ${view.y}px`,
-        }}
+        className="group/canvas absolute inset-0 touch-none overflow-hidden outline-none focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:ring-inset data-panning:cursor-grabbing"
       >
+        {/* Moved with a transform (no repaint). usePanZoom sets its
+            transform and background size. */}
+        <div
+          ref={backgroundRef}
+          aria-hidden
+          data-canvas-background
+          className="pointer-events-none absolute will-change-transform"
+          style={{ inset: -BACKGROUND_BLEED, backgroundImage }}
+        />
         <div
           ref={layerRef}
           data-canvas-background
-          onTransitionEnd={(event) => {
-            if (event.target === event.currentTarget) pz.onAnimationEnd()
-          }}
-          className="absolute top-0 left-0 origin-top-left data-animating:transition-transform data-animating:duration-(--duration-fast) data-animating:ease-(--ease-smooth-out)"
-          data-animating={pz.animating || undefined}
-          style={{
-            transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})`,
-            width: layout.width,
-            height: layout.height,
-          }}
+          // While a gesture runs (data-gesturing): the layer is a GPU layer
+          // (moved as a picture, sharp again after the gesture), the cards
+          // ignore the pointer, and their animations pause.
+          className="absolute top-0 left-0 origin-top-left group-data-gesturing/canvas:pointer-events-none group-data-gesturing/canvas:will-change-transform group-data-gesturing/canvas:**:[animation-play-state:paused] data-animating:transition-transform data-animating:duration-(--duration-fast) data-animating:ease-(--ease-smooth-out)"
+          style={{ width: layout.width, height: layout.height }}
         >
           {cards.map((doc) => (
             <Frame
@@ -217,7 +215,7 @@ export function CanvasPage() {
               doc={doc}
               mode={mode}
               showLabels={showLabels}
-              lowDetail={view.scale < LOW_DETAIL_SCALE}
+              lowDetail={lowDetail}
               viewport={viewport}
               style={layout.placements[doc.slug]}
               placeholderHeight={sizes[doc.slug]?.height ?? FIRST_HEIGHT_GUESS}
@@ -249,7 +247,7 @@ export function CanvasPage() {
           variant="ghost"
           size="icon-sm"
           aria-label="Zoom out"
-          onClick={() => pz.zoomTo(view.scale / 1.25, undefined, true)}
+          onClick={() => pz.zoomTo(pz.getView().scale / 1.25, undefined, true)}
         >
           <HugeiconsIcon icon={MinusSignIcon} strokeWidth={2} />
         </Button>
@@ -260,13 +258,13 @@ export function CanvasPage() {
           aria-label="Zoom to 100%"
           onClick={() => pz.zoomTo(1, undefined, true)}
         >
-          {Math.round(view.scale * 100)}%
+          {zoomPercent}%
         </Button>
         <Button
           variant="ghost"
           size="icon-sm"
           aria-label="Zoom in"
-          onClick={() => pz.zoomTo(view.scale * 1.25, undefined, true)}
+          onClick={() => pz.zoomTo(pz.getView().scale * 1.25, undefined, true)}
         >
           <HugeiconsIcon icon={PlusSignIcon} strokeWidth={2} />
         </Button>

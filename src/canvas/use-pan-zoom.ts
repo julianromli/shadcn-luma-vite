@@ -6,6 +6,15 @@ export type Rect = { x: number; y: number; width: number; height: number }
 export const MIN_SCALE = 0.1
 export const MAX_SCALE = 2
 
+// The size of one dot or grid cell of the background, at 100% zoom.
+export const BACKGROUND_TILE = 24
+// The background element is this much larger than the viewport on each side,
+// so it can move by up to one tile with no gap at the edge.
+export const BACKGROUND_BLEED = 64
+
+// After the last input, the gesture mode stays on for this long.
+const GESTURE_IDLE_MS = 150
+
 const clamp = (value: number, min: number, max: number) =>
   Math.min(max, Math.max(min, value))
 
@@ -26,18 +35,78 @@ function isEditable(target: EventTarget | null) {
   )
 }
 
+// Pan and zoom write the transform straight to the DOM, once per frame. React
+// state changes only when the zoom percentage changes, so a pan does not
+// render React at all.
 export function usePanZoom(initial: View) {
   const viewportRef = React.useRef<HTMLDivElement>(null)
-  const [view, setViewState] = React.useState(initial)
-  const [animating, setAnimating] = React.useState(false)
-  const [panning, setPanning] = React.useState(false)
-  const viewRef = React.useRef(view)
+  const layerRef = React.useRef<HTMLDivElement>(null)
+  const backgroundRef = React.useRef<HTMLDivElement>(null)
+  const viewRef = React.useRef(initial)
+  const frameRef = React.useRef(0)
+  const gestureTimerRef = React.useRef(0)
+  const [zoomPercent, setZoomPercent] = React.useState(
+    Math.round(initial.scale * 100)
+  )
 
-  const setView = React.useCallback((next: View, animate = false) => {
-    viewRef.current = next
-    setAnimating(animate)
-    setViewState(next)
+  const paint = React.useCallback(() => {
+    frameRef.current = 0
+    const { x, y, scale } = viewRef.current
+    const layer = layerRef.current
+    const background = backgroundRef.current
+
+    if (layer) {
+      layer.style.transform = `translate(${x}px, ${y}px) scale(${scale})`
+    }
+    if (background) {
+      // A transform moves the background without a repaint. It moves by
+      // the pan modulo one tile, so the pattern looks endless.
+      const tile = BACKGROUND_TILE * scale
+      const offsetX = (((x % tile) + tile) % tile) - BACKGROUND_BLEED
+      const offsetY = (((y % tile) + tile) % tile) - BACKGROUND_BLEED
+      background.style.transform = `translate(${offsetX}px, ${offsetY}px)`
+      background.style.backgroundSize = `${tile}px ${tile}px`
+    }
+    setZoomPercent(Math.round(scale * 100))
   }, [])
+
+  const schedulePaint = React.useCallback(() => {
+    if (!frameRef.current) {
+      frameRef.current = requestAnimationFrame(paint)
+    }
+  }, [paint])
+
+  // While a gesture runs, the canvas is a GPU layer, its cards ignore the
+  // pointer, and their animations pause (see the data-gesturing classes).
+  const markGesture = React.useCallback(() => {
+    const viewport = viewportRef.current
+    if (!viewport) return
+    viewport.setAttribute("data-gesturing", "")
+    clearTimeout(gestureTimerRef.current)
+    gestureTimerRef.current = window.setTimeout(
+      () => viewport.removeAttribute("data-gesturing"),
+      GESTURE_IDLE_MS
+    )
+  }, [])
+
+  const setView = React.useCallback(
+    (next: View, animate = false) => {
+      viewRef.current = next
+      const layer = layerRef.current
+      if (animate && layer) {
+        layer.setAttribute("data-animating", "")
+        cancelAnimationFrame(frameRef.current)
+        paint()
+      } else {
+        layer?.removeAttribute("data-animating")
+        markGesture()
+        schedulePaint()
+      }
+    },
+    [markGesture, paint, schedulePaint]
+  )
+
+  const getView = React.useCallback(() => viewRef.current, [])
 
   // Zooms so that the content point under `point` (viewport pixels) stays
   // under it.
@@ -100,6 +169,21 @@ export function usePanZoom(initial: View) {
     [setView]
   )
 
+  // The first paint, and the end of an animated move.
+  React.useLayoutEffect(() => {
+    paint()
+    const layer = layerRef.current
+    const onTransitionEnd = (event: TransitionEvent) => {
+      if (event.target === layer) layer?.removeAttribute("data-animating")
+    }
+    layer?.addEventListener("transitionend", onTransitionEnd)
+    return () => {
+      cancelAnimationFrame(frameRef.current)
+      clearTimeout(gestureTimerRef.current)
+      layer?.removeEventListener("transitionend", onTransitionEnd)
+    }
+  }, [paint])
+
   // Wheel, pointer and touch input. Wheel needs `passive: false` to stop the
   // page from scrolling, so it is added here and not as a React prop.
   React.useEffect(() => {
@@ -146,6 +230,11 @@ export function usePanZoom(initial: View) {
     // A touch is always tracked, so that a second finger can start a pinch
     // anywhere. One finger pans only when it starts on the background.
     let singleTouchPans = false
+
+    const setPanning = (panning: boolean) => {
+      if (panning) viewport.setAttribute("data-panning", "")
+      else viewport.removeAttribute("data-panning")
+    }
 
     const startGesture = () => {
       closePopups()
@@ -247,13 +336,12 @@ export function usePanZoom(initial: View) {
 
   return {
     viewportRef,
-    view,
-    animating,
-    panning,
-    setView,
+    layerRef,
+    backgroundRef,
+    zoomPercent,
+    getView,
     zoomTo,
     panBy,
     fitRect,
-    onAnimationEnd: () => setAnimating(false),
   }
 }

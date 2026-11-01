@@ -11,7 +11,10 @@ export type FrameSize = { height: number; wide: boolean }
 // One card for each component, placed by the masonry layout of the canvas.
 // It reports its height, and whether it has wide examples (from one-column
 // sections), so the layout can give it 2 columns.
-export function Frame({
+//
+// It is memoized: a canvas render (for example, a new zoom percentage) does
+// not render the 63 cards again.
+export const Frame = React.memo(function Frame({
   doc,
   mode,
   showLabels,
@@ -34,16 +37,24 @@ export function Frame({
   onMeasure: (slug: string, size: FrameSize) => void
 }) {
   const ref = React.useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = React.useState(false)
-  const rendered = visible && !lowDetail
+  const [seen, setSeen] = React.useState(false)
+  const rendered = seen && !lowDetail
 
-  // Only cards near the screen render their components.
+  // A card renders its components when it first comes near the screen, and
+  // then stays mounted, so a pan does not build heavy cards again. The
+  // browser skips the layout and paint of cards off the screen
+  // (content-visibility: auto). The first render is a transition, so it
+  // does not block a pan.
   React.useEffect(() => {
     const element = ref.current
     if (!element || !viewport) return
 
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        React.startTransition(() => setSeen(true))
+        observer.disconnect()
+      },
       { root: viewport, rootMargin: "50%" }
     )
     observer.observe(element)
@@ -94,7 +105,7 @@ export function Frame({
           key={String(dark)}
           data-ui-preview
           className={cn(
-            "overflow-hidden rounded-3xl border bg-background text-foreground shadow-xs",
+            "overflow-hidden rounded-3xl border bg-background text-foreground shadow-xs [contain-intrinsic-size:auto_280px] [content-visibility:auto]",
             dark && "dark"
           )}
         >
@@ -122,4 +133,4 @@ export function Frame({
       ))}
     </div>
   )
-}
+})
