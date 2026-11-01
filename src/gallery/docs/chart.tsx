@@ -203,19 +203,19 @@ export default function ChartDocs() {
         description="Move the pointer on a chart to see the tooltip. Each chart has a legend."
         columns={2}
       >
-        <Example title="Bar" source="BarChartDemo">
+        <Example title="Bar" canvas source="BarChartDemo">
           <BarChartDemo />
         </Example>
-        <Example title="Stacked bar, line tooltip" source="StackedBarChartDemo">
+        <Example title="Stacked bar, line tooltip" canvas source="StackedBarChartDemo">
           <StackedBarChartDemo />
         </Example>
-        <Example title="Line, no tooltip label" source="LineChartDemo">
+        <Example title="Line, no tooltip label" canvas source="LineChartDemo">
           <LineChartDemo />
         </Example>
-        <Example title="Area, dashed tooltip" source="AreaChartDemo">
+        <Example title="Area, dashed tooltip" canvas source="AreaChartDemo">
           <AreaChartDemo />
         </Example>
-        <Example title="Pie" source="PieChartDemo">
+        <Example title="Pie" canvas source="PieChartDemo">
           <PieChartDemo />
         </Example>
       </Section>

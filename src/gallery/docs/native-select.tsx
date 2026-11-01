@@ -20,7 +20,7 @@ export default function NativeSelectDocs() {
         title="States"
         description="Focus is forced so that you can compare it. The default example reacts to your mouse and keyboard."
       >
-        <Example title="Default">
+        <Example title="Default" canvas>
           <NativeSelect aria-label="Status">
             <NativeSelectOption value="">Select a status</NativeSelectOption>
             <NativeSelectOption value="todo">To do</NativeSelectOption>
@@ -46,7 +46,7 @@ export default function NativeSelectDocs() {
       </Section>
 
       <Section title="Sizes and groups">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <NativeSelect size="sm" aria-label="Status">
             <NativeSelectOption value="todo">To do</NativeSelectOption>
             <NativeSelectOption value="done">Done</NativeSelectOption>
@@ -58,7 +58,7 @@ export default function NativeSelectDocs() {
             <NativeSelectOption value="done">Done</NativeSelectOption>
           </NativeSelect>
         </Example>
-        <Example title="Option groups">
+        <Example title="Option groups" canvas>
           <NativeSelect aria-label="Food">
             <NativeSelectOptGroup label="Fruits">
               <NativeSelectOption value="apple">Apple</NativeSelectOption>

@@ -51,12 +51,12 @@ export default function CodeBlockDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <CodeBlock>
             <CodeBlockContent>bun add @base-ui/react</CodeBlockContent>
           </CodeBlock>
         </Example>
-        <Example title="Destructive">
+        <Example title="Destructive" canvas>
           <CodeBlock variant="destructive">
             <CodeBlockHeader>
               <CodeBlockTitle>
@@ -77,7 +77,7 @@ export default function CodeBlockDocs() {
             <CodeBlockContent>bun run build</CodeBlockContent>
           </CodeBlock>
         </Example>
-        <Example title="Small">
+        <Example title="Small" canvas>
           <CodeBlock size="sm">
             <CodeBlockContent>bun run build</CodeBlockContent>
           </CodeBlock>
@@ -113,7 +113,7 @@ export default function CodeBlockDocs() {
       </Section>
 
       <Section title="Parts" columns={2}>
-        <Example title="Header and footer">
+        <Example title="Header and footer" canvas>
           <CodeBlock>
             <CodeBlockHeader>
               <CodeBlockTitle>
@@ -128,14 +128,14 @@ export default function CodeBlockDocs() {
             <CodeBlockFooter>JSON · 1 line</CodeBlockFooter>
           </CodeBlock>
         </Example>
-        <Example title="Line numbers">
+        <Example title="Line numbers" canvas>
           <CodeBlock>
             <CodeBlockContent lineNumbers startLine={10}>
               {"const a = 1\nconst b = 2\nconst sum = a + b"}
             </CodeBlockContent>
           </CodeBlock>
         </Example>
-        <Example title="Changed lines">
+        <Example title="Changed lines" canvas>
           <CodeBlock>
             <CodeBlockContent>
               <CodeBlockLine>{"<Button"}</CodeBlockLine>
@@ -146,7 +146,7 @@ export default function CodeBlockDocs() {
             </CodeBlockContent>
           </CodeBlock>
         </Example>
-        <Example title="Wrap long lines">
+        <Example title="Wrap long lines" canvas>
           <CodeBlock>
             <CodeBlockContent wrap>
               This line is long. With wrap, it goes onto more than one line and
@@ -157,7 +157,7 @@ export default function CodeBlockDocs() {
       </Section>
 
       <Section title="Syntax highlight" columns={1}>
-        <Example title="Highlighted code" source="HighlightedCodeBlock">
+        <Example title="Highlighted code" canvas source="HighlightedCodeBlock">
           <HighlightedCodeBlock />
         </Example>
       </Section>

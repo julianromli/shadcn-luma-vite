@@ -1,6 +1,10 @@
 import * as React from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons"
+import {
+  DashboardSquare01Icon,
+  Moon02Icon,
+  Sun03Icon,
+} from "@hugeicons/core-free-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -20,6 +24,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { useTheme } from "@/components/theme-provider"
+import { CanvasPage } from "@/canvas/canvas-page"
 import { CodeView } from "@/gallery/example"
 import { CATEGORIES, docs, type Doc } from "@/gallery/registry"
 
@@ -45,26 +50,38 @@ export function App() {
   const doc = docs.find((item) => item.slug === slug)
 
   React.useEffect(() => {
-    document.title = doc ? `${doc.name} – Design System` : "Design System"
-  }, [doc])
+    document.title = doc
+      ? `${doc.name} – Design System`
+      : slug === "canvas"
+        ? "Canvas – Design System"
+        : "Design System"
+  }, [doc, slug])
 
+  if (slug === "canvas") {
+    return <CanvasPage />
+  }
+
+  // data-ui-chrome keeps the gallery interface on the default theme. The
+  // component previews inside it use the custom theme (data-ui-preview).
   return (
-    <SidebarProvider>
-      <GallerySidebar active={doc?.slug} />
-      <SidebarInset className="min-w-0">
-        <header className="sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b bg-background/80 px-4 backdrop-blur">
-          <SidebarTrigger />
-          <Separator orientation="vertical" className="h-4" />
-          <span className="truncate text-sm font-medium">
-            {doc?.name ?? "Overview"}
-          </span>
-          <ThemeToggle />
-        </header>
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-10 md:px-8">
-          {doc ? <DocPage doc={doc} key={doc.slug} /> : <Overview />}
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    <div data-ui-chrome className="contents">
+      <SidebarProvider>
+        <GallerySidebar active={doc?.slug} />
+        <SidebarInset className="min-w-0">
+          <header className="sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b bg-background/80 px-4 backdrop-blur">
+            <SidebarTrigger />
+            <Separator orientation="vertical" className="h-4" />
+            <span className="truncate text-sm font-medium">
+              {doc?.name ?? "Overview"}
+            </span>
+            <ThemeToggle />
+          </header>
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-10 md:px-8">
+            {doc ? <DocPage doc={doc} key={doc.slug} /> : <Overview />}
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
   )
 }
 
@@ -80,6 +97,19 @@ function GallerySidebar({ active }: { active?: string }) {
         <a href="#/" className="text-base font-semibold tracking-tight">
           Design System
         </a>
+        <Button
+          variant="outline"
+          size="sm"
+          render={<a href="#/canvas" />}
+          nativeButton={false}
+        >
+          <HugeiconsIcon
+            icon={DashboardSquare01Icon}
+            strokeWidth={2}
+            data-icon="inline-start"
+          />
+          Open canvas
+        </Button>
         <SidebarInput
           type="search"
           placeholder="Search components"
@@ -154,9 +184,7 @@ function DocPage({ doc }: { doc: Doc }) {
         <p className="max-w-2xl text-pretty text-muted-foreground">
           {doc.description}
         </p>
-        {doc.imports && (
-          <CodeView code={doc.imports} copy className="mt-2" />
-        )}
+        {doc.imports && <CodeView code={doc.imports} copy className="mt-2" />}
       </div>
       <Page />
     </>
@@ -169,8 +197,8 @@ function Overview() {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold tracking-tight">Components</h1>
         <p className="max-w-2xl text-pretty text-muted-foreground">
-          Browse every component with its variants and states. Open a
-          component to copy the code for each example.
+          Browse every component with its variants and states. Open a component
+          to copy the code for each example.
         </p>
       </div>
       {CATEGORIES.map((category) => {

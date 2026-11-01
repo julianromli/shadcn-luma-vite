@@ -29,20 +29,20 @@ export default function FieldDocs() {
   return (
     <>
       <Section title="Field" columns={2}>
-        <Example title="Vertical" className="items-stretch">
+        <Example title="Vertical" className="items-stretch" canvas>
           <Field>
             <FieldLabel htmlFor="field-name">Name</FieldLabel>
             <Input id="field-name" placeholder="Ada Lovelace" />
             <FieldDescription>Use your full name.</FieldDescription>
           </Field>
         </Example>
-        <Example title="Horizontal" className="items-stretch">
+        <Example title="Horizontal" className="items-stretch" canvas>
           <Field orientation="horizontal">
             <Checkbox id="field-terms" />
             <FieldLabel htmlFor="field-terms">Accept the terms</FieldLabel>
           </Field>
         </Example>
-        <Example title="Horizontal with content" className="items-stretch">
+        <Example title="Horizontal with content" className="items-stretch" canvas>
           <Field orientation="horizontal">
             <FieldContent>
               <FieldLabel htmlFor="field-marketing">Marketing emails</FieldLabel>
@@ -51,7 +51,7 @@ export default function FieldDocs() {
             <Switch id="field-marketing" />
           </Field>
         </Example>
-        <Example title="Responsive" className="items-stretch">
+        <Example title="Responsive" className="items-stretch" canvas>
           <FieldGroup>
             <Field orientation="responsive">
               <FieldContent>
@@ -94,7 +94,7 @@ export default function FieldDocs() {
       </Section>
 
       <Section title="Field set and group" columns={2}>
-        <Example title="Form" className="items-stretch">
+        <Example title="Form" className="items-stretch" canvas>
           <FieldSet>
             <FieldLegend>Profile</FieldLegend>
             <FieldDescription>This information is public.</FieldDescription>
@@ -110,7 +110,7 @@ export default function FieldDocs() {
             </FieldGroup>
           </FieldSet>
         </Example>
-        <Example title="Choice cards" className="items-stretch">
+        <Example title="Choice cards" className="items-stretch" canvas>
           <FieldSet>
             <FieldLegend variant="label">Plan</FieldLegend>
             <RadioGroup defaultValue="pro">
@@ -135,7 +135,7 @@ export default function FieldDocs() {
             </RadioGroup>
           </FieldSet>
         </Example>
-        <Example title="Separator" className="items-stretch">
+        <Example title="Separator" className="items-stretch" canvas>
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="sep-email">Email</FieldLabel>

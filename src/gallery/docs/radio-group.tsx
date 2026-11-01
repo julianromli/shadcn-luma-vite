@@ -13,7 +13,7 @@ export default function RadioGroupDocs() {
   return (
     <>
       <Section title="Examples">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <RadioGroup defaultValue="comfortable" className="w-fit">
             <Label>
               <RadioGroupItem value="default" />

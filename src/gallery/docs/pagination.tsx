@@ -75,7 +75,7 @@ export default function PaginationDocs() {
   return (
     <>
       <Section title="Variants" columns={1}>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Pagination>
             <PaginationContent>
               <PaginationItem>
@@ -101,7 +101,7 @@ export default function PaginationDocs() {
             </PaginationContent>
           </Pagination>
         </Example>
-        <Example title="Simple">
+        <Example title="Simple" canvas>
           <Pagination>
             <PaginationContent>
               <PaginationItem>
@@ -113,7 +113,7 @@ export default function PaginationDocs() {
             </PaginationContent>
           </Pagination>
         </Example>
-        <Example title="Custom labels">
+        <Example title="Custom labels" canvas>
           <Pagination>
             <PaginationContent>
               <PaginationItem>

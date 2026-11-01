@@ -15,10 +15,10 @@ export default function InputDocs() {
         title="States"
         description="Focus is forced so that you can compare it. The default example reacts to your mouse and keyboard."
       >
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Input placeholder="Email" />
         </Example>
-        <Example title="With value">
+        <Example title="With value" canvas>
           <Input defaultValue="ada@example.com" />
         </Example>
         <Example title="Focus" state="focus">
@@ -36,22 +36,22 @@ export default function InputDocs() {
       </Section>
 
       <Section title="Types">
-        <Example title="Email">
+        <Example title="Email" canvas>
           <Input type="email" placeholder="you@example.com" />
         </Example>
-        <Example title="Password">
+        <Example title="Password" canvas>
           <Input type="password" defaultValue="password" />
         </Example>
-        <Example title="Number">
+        <Example title="Number" canvas>
           <Input type="number" defaultValue={42} />
         </Example>
-        <Example title="Search">
+        <Example title="Search" canvas>
           <Input type="search" placeholder="Search" />
         </Example>
-        <Example title="Date">
+        <Example title="Date" canvas>
           <Input type="date" />
         </Example>
-        <Example title="File">
+        <Example title="File" canvas>
           <Input type="file" />
         </Example>
       </Section>

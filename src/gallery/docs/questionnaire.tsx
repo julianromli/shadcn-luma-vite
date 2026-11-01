@@ -69,7 +69,7 @@ export default function QuestionnaireDocs() {
   return (
     <>
       <Section title="Usage" columns={1}>
-        <Example title="Three questions" source="QuestionnaireDemo">
+        <Example title="Three questions" canvas source="QuestionnaireDemo">
           <QuestionnaireDemo />
         </Example>
       </Section>
@@ -78,7 +78,7 @@ export default function QuestionnaireDocs() {
         title="Choice states"
         description="Hover and focus are forced so that you can compare them."
       >
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Questionnaire className="max-w-xs">
             <QuestionnaireItem name="plan-default">
               <QuestionnaireChoices>
@@ -105,7 +105,7 @@ export default function QuestionnaireDocs() {
             </QuestionnaireItem>
           </Questionnaire>
         </Example>
-        <Example title="Checked">
+        <Example title="Checked" canvas>
           <Questionnaire className="max-w-xs">
             <QuestionnaireItem name="plan-checked">
               <QuestionnaireChoices>
@@ -116,7 +116,7 @@ export default function QuestionnaireDocs() {
             </QuestionnaireItem>
           </Questionnaire>
         </Example>
-        <Example title="Checked, multiple">
+        <Example title="Checked, multiple" canvas>
           <Questionnaire className="max-w-xs">
             <QuestionnaireItem name="plan-multiple" multiple>
               <QuestionnaireChoices>
@@ -148,7 +148,7 @@ export default function QuestionnaireDocs() {
             </QuestionnaireItem>
           </Questionnaire>
         </Example>
-        <Example title="With description">
+        <Example title="With description" canvas>
           <Questionnaire className="max-w-xs">
             <QuestionnaireItem name="plan-description">
               <QuestionnaireChoices>
@@ -168,7 +168,7 @@ export default function QuestionnaireDocs() {
         title="Input states"
         description="Focus is forced so that you can compare it."
       >
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Questionnaire className="max-w-xs">
             <QuestionnaireItem name="email-default">
               <QuestionnaireInput type="email" placeholder="Email" />

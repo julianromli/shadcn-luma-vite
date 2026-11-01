@@ -14,44 +14,44 @@ export default function SpinnerDocs() {
   return (
     <>
       <Section title="Sizes">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Spinner className="size-3" />
         </Example>
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Spinner />
         </Example>
-        <Example title="Large">
+        <Example title="Large" canvas>
           <Spinner className="size-6" />
           <Spinner className="size-8" />
         </Example>
       </Section>
 
       <Section title="Colors">
-        <Example title="Muted">
+        <Example title="Muted" canvas>
           <Spinner className="text-muted-foreground" />
         </Example>
-        <Example title="Primary">
+        <Example title="Primary" canvas>
           <Spinner className="text-primary" />
         </Example>
-        <Example title="Destructive">
+        <Example title="Destructive" canvas>
           <Spinner className="text-destructive" />
         </Example>
       </Section>
 
       <Section title="In context">
-        <Example title="In a button">
+        <Example title="In a button" canvas>
           <Button disabled>
             <Spinner data-icon="inline-start" />
             Saving
           </Button>
         </Example>
-        <Example title="In a badge">
+        <Example title="In a badge" canvas>
           <Badge variant="secondary">
             <Spinner data-icon="inline-start" />
             Syncing
           </Badge>
         </Example>
-        <Example title="With text">
+        <Example title="With text" canvas>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Spinner />
             Loading data

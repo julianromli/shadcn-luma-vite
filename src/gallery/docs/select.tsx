@@ -24,7 +24,7 @@ export default function SelectDocs() {
         title="States"
         description="Focus is forced so that you can compare it. The live examples react to your mouse and keyboard."
       >
-        <Example title="Placeholder">
+        <Example title="Placeholder" canvas>
           <Select>
             <SelectTrigger className="w-44">
               <SelectValue placeholder="Select a fruit" />
@@ -36,7 +36,7 @@ export default function SelectDocs() {
             </SelectContent>
           </Select>
         </Example>
-        <Example title="With value">
+        <Example title="With value" canvas>
           <Select defaultValue="banana">
             <SelectTrigger className="w-44">
               <SelectValue />
@@ -94,7 +94,7 @@ export default function SelectDocs() {
       </Section>
 
       <Section title="Sizes and groups">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Select defaultValue="apple">
             <SelectTrigger size="sm" className="w-44">
               <SelectValue />
@@ -116,7 +116,7 @@ export default function SelectDocs() {
             </SelectContent>
           </Select>
         </Example>
-        <Example title="Groups">
+        <Example title="Groups" canvas>
           <Select>
             <SelectTrigger className="w-44">
               <SelectValue placeholder="Select food" />

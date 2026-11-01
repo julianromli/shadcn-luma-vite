@@ -16,10 +16,10 @@ export default function SwitchDocs() {
         title="States"
         description="Focus is forced so that you can compare it. The live examples react to your mouse and keyboard."
       >
-        <Example title="Off">
+        <Example title="Off" canvas>
           <Switch aria-label="Airplane mode" />
         </Example>
-        <Example title="On">
+        <Example title="On" canvas>
           <Switch defaultChecked aria-label="Airplane mode" />
         </Example>
         <Example title="Focus" state="focus">
@@ -40,7 +40,7 @@ export default function SwitchDocs() {
       </Section>
 
       <Section title="Sizes">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Switch size="sm" aria-label="Airplane mode" />
           <Switch size="sm" defaultChecked aria-label="Airplane mode" />
         </Example>
@@ -48,7 +48,7 @@ export default function SwitchDocs() {
           <Switch aria-label="Airplane mode" />
           <Switch defaultChecked aria-label="Airplane mode" />
         </Example>
-        <Example title="With label">
+        <Example title="With label" canvas>
           <Label>
             <Switch />
             Airplane mode

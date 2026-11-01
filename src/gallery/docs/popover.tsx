@@ -23,7 +23,7 @@ export default function PopoverDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Open popover
@@ -38,7 +38,7 @@ export default function PopoverDocs() {
             </PopoverContent>
           </Popover>
         </Example>
-        <Example title="With form">
+        <Example title="With form" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Dimensions
@@ -74,7 +74,7 @@ export default function PopoverDocs() {
       </Section>
 
       <Section title="Sides">
-        <Example title="Top">
+        <Example title="Top" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Top
@@ -84,7 +84,7 @@ export default function PopoverDocs() {
             </PopoverContent>
           </Popover>
         </Example>
-        <Example title="Right">
+        <Example title="Right" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Right
@@ -94,7 +94,7 @@ export default function PopoverDocs() {
             </PopoverContent>
           </Popover>
         </Example>
-        <Example title="Bottom">
+        <Example title="Bottom" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Bottom
@@ -104,7 +104,7 @@ export default function PopoverDocs() {
             </PopoverContent>
           </Popover>
         </Example>
-        <Example title="Left">
+        <Example title="Left" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Left
@@ -117,7 +117,7 @@ export default function PopoverDocs() {
       </Section>
 
       <Section title="Alignment">
-        <Example title="Start">
+        <Example title="Start" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Align start
@@ -127,7 +127,7 @@ export default function PopoverDocs() {
             </PopoverContent>
           </Popover>
         </Example>
-        <Example title="Center">
+        <Example title="Center" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Align center
@@ -137,7 +137,7 @@ export default function PopoverDocs() {
             </PopoverContent>
           </Popover>
         </Example>
-        <Example title="End">
+        <Example title="End" canvas>
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               Align end

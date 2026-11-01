@@ -11,7 +11,7 @@ export const meta: DocMeta = {
 export default function SeparatorDocs() {
   return (
     <Section title="Orientation" columns={2}>
-      <Example title="Horizontal">
+      <Example title="Horizontal" canvas>
         <div className="flex w-full max-w-xs flex-col gap-3 text-sm">
           <div>
             <p className="font-medium">Design System</p>
@@ -21,7 +21,7 @@ export default function SeparatorDocs() {
           <p className="text-muted-foreground">Version 1.0</p>
         </div>
       </Example>
-      <Example title="Vertical">
+      <Example title="Vertical" canvas>
         <div className="flex h-5 items-center gap-3 text-sm">
           <span>Blog</span>
           <Separator orientation="vertical" />

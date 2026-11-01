@@ -72,13 +72,13 @@ export default function CalendarDocs() {
   return (
     <>
       <Section title="Selection" columns={2}>
-        <Example title="One date" source="CalendarSingleDemo">
+        <Example title="One date" source="CalendarSingleDemo" canvas>
           <CalendarSingleDemo />
         </Example>
-        <Example title="Date range" source="CalendarRangeDemo">
+        <Example title="Date range" source="CalendarRangeDemo" canvas>
           <CalendarRangeDemo />
         </Example>
-        <Example title="More than one date" source="CalendarMultipleDemo">
+        <Example title="More than one date" source="CalendarMultipleDemo" canvas>
           <CalendarMultipleDemo />
         </Example>
         <Example title="Disabled weekends" source="CalendarDisabledDemo">
@@ -87,16 +87,16 @@ export default function CalendarDocs() {
       </Section>
 
       <Section title="Layout" columns={2}>
-        <Example title="Month and year dropdowns">
+        <Example title="Month and year dropdowns" canvas>
           <Calendar captionLayout="dropdown" className="rounded-2xl border" />
         </Example>
-        <Example title="Two months">
+        <Example title="Two months" canvas>
           <Calendar numberOfMonths={2} className="rounded-2xl border" />
         </Example>
-        <Example title="Week numbers">
+        <Example title="Week numbers" canvas>
           <Calendar showWeekNumber className="rounded-2xl border" />
         </Example>
-        <Example title="Outline buttons">
+        <Example title="Outline buttons" canvas>
           <Calendar buttonVariant="outline" className="rounded-2xl border" />
         </Example>
       </Section>

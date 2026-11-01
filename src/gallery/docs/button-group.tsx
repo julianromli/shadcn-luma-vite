@@ -26,21 +26,21 @@ export default function ButtonGroupDocs() {
   return (
     <>
       <Section title="Orientation">
-        <Example title="Horizontal">
+        <Example title="Horizontal" canvas>
           <ButtonGroup>
             <Button variant="outline">Archive</Button>
             <Button variant="outline">Report</Button>
             <Button variant="outline">Snooze</Button>
           </ButtonGroup>
         </Example>
-        <Example title="Vertical">
+        <Example title="Vertical" canvas>
           <ButtonGroup orientation="vertical">
             <Button variant="outline">Top</Button>
             <Button variant="outline">Middle</Button>
             <Button variant="outline">Bottom</Button>
           </ButtonGroup>
         </Example>
-        <Example title="Nested groups">
+        <Example title="Nested groups" canvas>
           <ButtonGroup>
             <ButtonGroup>
               <Button variant="outline">1</Button>
@@ -57,7 +57,7 @@ export default function ButtonGroupDocs() {
       </Section>
 
       <Section title="Sizes">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <ButtonGroup>
             <Button variant="outline" size="sm">Day</Button>
             <Button variant="outline" size="sm">Week</Button>
@@ -71,7 +71,7 @@ export default function ButtonGroupDocs() {
             <Button variant="outline">Month</Button>
           </ButtonGroup>
         </Example>
-        <Example title="Large">
+        <Example title="Large" canvas>
           <ButtonGroup>
             <Button variant="outline" size="lg">Day</Button>
             <Button variant="outline" size="lg">Week</Button>
@@ -107,14 +107,14 @@ export default function ButtonGroupDocs() {
       </Section>
 
       <Section title="With content">
-        <Example title="Separator">
+        <Example title="Separator" canvas>
           <ButtonGroup>
             <Button variant="secondary">Copy</Button>
             <ButtonGroupSeparator />
             <Button variant="secondary">Paste</Button>
           </ButtonGroup>
         </Example>
-        <Example title="Split button">
+        <Example title="Split button" canvas>
           <ButtonGroup>
             <Button>Save</Button>
             <ButtonGroupSeparator />
@@ -123,13 +123,13 @@ export default function ButtonGroupDocs() {
             </Button>
           </ButtonGroup>
         </Example>
-        <Example title="Text">
+        <Example title="Text" canvas>
           <ButtonGroup>
             <ButtonGroupText>https://</ButtonGroupText>
             <Input placeholder="example.com" aria-label="Website" />
           </ButtonGroup>
         </Example>
-        <Example title="Input">
+        <Example title="Input" canvas>
           <ButtonGroup>
             <Input placeholder="Search" aria-label="Search" />
             <Button variant="outline" size="icon" aria-label="Search">
@@ -137,7 +137,7 @@ export default function ButtonGroupDocs() {
             </Button>
           </ButtonGroup>
         </Example>
-        <Example title="Icon buttons">
+        <Example title="Icon buttons" canvas>
           <ButtonGroup>
             <Button variant="outline" size="icon" aria-label="Copy">
               <HugeiconsIcon icon={Copy01Icon} strokeWidth={2} />

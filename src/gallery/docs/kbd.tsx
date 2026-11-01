@@ -21,15 +21,15 @@ export default function KbdDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Single key">
+        <Example title="Single key" canvas>
           <Kbd>Esc</Kbd>
         </Example>
-        <Example title="With icon">
+        <Example title="With icon" canvas>
           <Kbd>
             <HugeiconsIcon icon={CommandIcon} strokeWidth={2} />
           </Kbd>
         </Example>
-        <Example title="Group">
+        <Example title="Group" canvas>
           <KbdGroup>
             <Kbd>⌘</Kbd>
             <Kbd>Shift</Kbd>
@@ -39,18 +39,18 @@ export default function KbdDocs() {
       </Section>
 
       <Section title="In context">
-        <Example title="In text">
+        <Example title="In text" canvas>
           <p className="text-sm text-muted-foreground">
             Press <Kbd>D</Kbd> to change the theme.
           </p>
         </Example>
-        <Example title="In a button">
+        <Example title="In a button" canvas>
           <Button variant="outline">
             Search
             <Kbd>⌘K</Kbd>
           </Button>
         </Example>
-        <Example title="In a tooltip">
+        <Example title="In a tooltip" canvas>
           <Tooltip>
             <TooltipTrigger render={<Button variant="outline" />}>
               Save

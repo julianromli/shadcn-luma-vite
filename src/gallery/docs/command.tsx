@@ -115,7 +115,7 @@ export default function CommandDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Inline">
+        <Example title="Inline" canvas>
           <Command className="max-w-sm rounded-3xl border">
             <CommandInput placeholder="Type a command or search" />
             <CommandList>
@@ -155,10 +155,10 @@ export default function CommandDocs() {
             </CommandList>
           </Command>
         </Example>
-        <Example title="Selected item" source="SelectableCommand">
+        <Example title="Selected item" source="SelectableCommand" canvas>
           <SelectableCommand />
         </Example>
-        <Example title="Empty result">
+        <Example title="Empty result" canvas>
           <Command className="max-w-sm rounded-3xl border">
             <CommandInput placeholder="Search" defaultValue="xyz" />
             <CommandList>
@@ -170,7 +170,7 @@ export default function CommandDocs() {
             </CommandList>
           </Command>
         </Example>
-        <Example title="Dialog" source="CommandMenuDialog">
+        <Example title="Dialog" source="CommandMenuDialog" canvas>
           <CommandMenuDialog />
         </Example>
       </Section>

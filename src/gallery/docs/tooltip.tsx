@@ -22,7 +22,7 @@ export default function TooltipDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Tooltip>
             <TooltipTrigger render={<Button variant="outline" />}>
               Hover me
@@ -30,7 +30,7 @@ export default function TooltipDocs() {
             <TooltipContent>Add to library</TooltipContent>
           </Tooltip>
         </Example>
-        <Example title="Icon button">
+        <Example title="Icon button" canvas>
           <Tooltip>
             <TooltipTrigger
               render={<Button variant="outline" size="icon" aria-label="Add" />}
@@ -40,7 +40,7 @@ export default function TooltipDocs() {
             <TooltipContent>Add item</TooltipContent>
           </Tooltip>
         </Example>
-        <Example title="With shortcut">
+        <Example title="With shortcut" canvas>
           <Tooltip>
             <TooltipTrigger render={<Button variant="outline" />}>
               Save
@@ -63,7 +63,7 @@ export default function TooltipDocs() {
       </Section>
 
       <Section title="Sides">
-        <Example title="Top">
+        <Example title="Top" canvas>
           <Tooltip>
             <TooltipTrigger render={<Button variant="outline" />}>
               Top
@@ -71,7 +71,7 @@ export default function TooltipDocs() {
             <TooltipContent side="top">Tooltip on top</TooltipContent>
           </Tooltip>
         </Example>
-        <Example title="Right">
+        <Example title="Right" canvas>
           <Tooltip>
             <TooltipTrigger render={<Button variant="outline" />}>
               Right
@@ -79,7 +79,7 @@ export default function TooltipDocs() {
             <TooltipContent side="right">Tooltip on the right</TooltipContent>
           </Tooltip>
         </Example>
-        <Example title="Bottom">
+        <Example title="Bottom" canvas>
           <Tooltip>
             <TooltipTrigger render={<Button variant="outline" />}>
               Bottom
@@ -87,7 +87,7 @@ export default function TooltipDocs() {
             <TooltipContent side="bottom">Tooltip below</TooltipContent>
           </Tooltip>
         </Example>
-        <Example title="Left">
+        <Example title="Left" canvas>
           <Tooltip>
             <TooltipTrigger render={<Button variant="outline" />}>
               Left

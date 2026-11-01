@@ -2,7 +2,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { Calendar03Icon } from "@hugeicons/core-free-icons"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import {
   HoverCard,
   HoverCardContent,
@@ -22,11 +22,11 @@ export default function HoverCardDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Profile preview">
+        <Example title="Profile preview" canvas>
           <HoverCard>
             <HoverCardTrigger
               href="#/hover-card"
-              render={<Button variant="link" nativeButton={false} />}
+              className={buttonVariants({ variant: "link" })}
             >
               @alexlee
             </HoverCardTrigger>
@@ -41,7 +41,11 @@ export default function HoverCardDocs() {
                     Designer and engineer. Makes tools for small teams.
                   </p>
                   <div className="flex items-center gap-2 pt-1 text-xs text-muted-foreground">
-                    <HugeiconsIcon icon={Calendar03Icon} strokeWidth={2} className="size-4" />
+                    <HugeiconsIcon
+                      icon={Calendar03Icon}
+                      strokeWidth={2}
+                      className="size-4"
+                    />
                     Joined March 2024
                   </div>
                 </div>
@@ -49,7 +53,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Text link">
+        <Example title="Text link" canvas>
           <p className="text-sm">
             Read the{" "}
             <HoverCard>
@@ -71,7 +75,7 @@ export default function HoverCardDocs() {
       </Section>
 
       <Section title="Sides">
-        <Example title="Top">
+        <Example title="Top" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Top
@@ -81,7 +85,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Right">
+        <Example title="Right" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Right
@@ -91,7 +95,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Bottom">
+        <Example title="Bottom" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Bottom
@@ -101,7 +105,7 @@ export default function HoverCardDocs() {
             </HoverCardContent>
           </HoverCard>
         </Example>
-        <Example title="Left">
+        <Example title="Left" canvas>
           <HoverCard>
             <HoverCardTrigger href="#/hover-card" className="text-sm underline">
               Left

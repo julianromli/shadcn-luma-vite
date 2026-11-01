@@ -50,7 +50,7 @@ export default function DialogDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Dialog>
             <DialogTrigger render={<Button variant="outline" />}>
               Open dialog
@@ -68,7 +68,7 @@ export default function DialogDocs() {
             </DialogContent>
           </Dialog>
         </Example>
-        <Example title="With form">
+        <Example title="With form" canvas>
           <Dialog>
             <DialogTrigger render={<Button variant="outline" />}>
               Edit profile
@@ -106,7 +106,7 @@ export default function DialogDocs() {
             </DialogContent>
           </Dialog>
         </Example>
-        <Example title="No close button">
+        <Example title="No close button" canvas>
           <Dialog>
             <DialogTrigger render={<Button variant="outline" />}>
               Open dialog
@@ -127,7 +127,7 @@ export default function DialogDocs() {
             </DialogContent>
           </Dialog>
         </Example>
-        <Example title="Long content">
+        <Example title="Long content" canvas>
           <Dialog>
             <DialogTrigger render={<Button variant="outline" />}>
               Read terms

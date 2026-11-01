@@ -15,10 +15,10 @@ export default function TextareaDocs() {
       title="States"
       description="Focus is forced so that you can compare it. The default example reacts to your mouse and keyboard."
     >
-      <Example title="Default">
+      <Example title="Default" canvas>
         <Textarea placeholder="Type your message here." />
       </Example>
-      <Example title="With value">
+      <Example title="With value" canvas>
         <Textarea defaultValue={"The first line.\nThe second line."} />
       </Example>
       <Example title="Focus" state="focus">

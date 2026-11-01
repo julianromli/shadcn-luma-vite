@@ -33,7 +33,7 @@ export default function ItemDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Item>
             <ItemContent>
               <ItemTitle>Basic item</ItemTitle>
@@ -41,7 +41,7 @@ export default function ItemDocs() {
             </ItemContent>
           </Item>
         </Example>
-        <Example title="Outline">
+        <Example title="Outline" canvas>
           <Item variant="outline">
             <ItemContent>
               <ItemTitle>Outline item</ItemTitle>
@@ -49,7 +49,7 @@ export default function ItemDocs() {
             </ItemContent>
           </Item>
         </Example>
-        <Example title="Muted">
+        <Example title="Muted" canvas>
           <Item variant="muted">
             <ItemContent>
               <ItemTitle>Muted item</ItemTitle>
@@ -70,7 +70,7 @@ export default function ItemDocs() {
             </ItemContent>
           </Item>
         </Example>
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Item variant="outline" size="sm">
             <ItemMedia variant="icon">
               <HugeiconsIcon icon={Notification03Icon} strokeWidth={2} />
@@ -80,7 +80,7 @@ export default function ItemDocs() {
             </ItemContent>
           </Item>
         </Example>
-        <Example title="Extra small">
+        <Example title="Extra small" canvas>
           <Item variant="outline" size="xs">
             <ItemMedia variant="icon">
               <HugeiconsIcon icon={Notification03Icon} strokeWidth={2} />
@@ -129,7 +129,7 @@ export default function ItemDocs() {
       </Section>
 
       <Section title="Media">
-        <Example title="Icon">
+        <Example title="Icon" canvas>
           <Item variant="outline">
             <ItemMedia variant="icon">
               <HugeiconsIcon icon={BookOpen01Icon} strokeWidth={2} />
@@ -140,7 +140,7 @@ export default function ItemDocs() {
             </ItemContent>
           </Item>
         </Example>
-        <Example title="Image">
+        <Example title="Image" canvas>
           <Item variant="outline">
             <ItemMedia variant="image">
               <div className="size-full bg-linear-to-br from-primary/40 to-primary/10" />
@@ -151,7 +151,7 @@ export default function ItemDocs() {
             </ItemContent>
           </Item>
         </Example>
-        <Example title="Avatar">
+        <Example title="Avatar" canvas>
           <Item variant="outline">
             <ItemMedia>
               <Avatar>
@@ -173,7 +173,7 @@ export default function ItemDocs() {
       </Section>
 
       <Section title="Composition" columns={2}>
-        <Example title="Header and footer">
+        <Example title="Header and footer" canvas>
           <Item variant="outline">
             <ItemHeader>
               <span className="text-xs text-muted-foreground">Today</span>
@@ -190,7 +190,7 @@ export default function ItemDocs() {
             </ItemFooter>
           </Item>
         </Example>
-        <Example title="Group">
+        <Example title="Group" canvas>
           <ItemGroup>
             <Item size="sm">
               <ItemContent>

@@ -18,7 +18,7 @@ export default function AccordionDocs() {
   return (
     <>
       <Section title="Variants" columns={2}>
-        <Example title="Single">
+        <Example title="Single" canvas>
           <Accordion className="max-w-md">
             <AccordionItem value="shipping">
               <AccordionTrigger>How long is shipping?</AccordionTrigger>
@@ -38,7 +38,7 @@ export default function AccordionDocs() {
             </AccordionItem>
           </Accordion>
         </Example>
-        <Example title="Multiple open">
+        <Example title="Multiple open" canvas>
           <Accordion multiple defaultValue={["shipping", "returns"]} className="max-w-md">
             <AccordionItem value="shipping">
               <AccordionTrigger>How long is shipping?</AccordionTrigger>
@@ -69,7 +69,7 @@ export default function AccordionDocs() {
             </AccordionItem>
           </Accordion>
         </Example>
-        <Example title="Open">
+        <Example title="Open" canvas>
           <Accordion defaultValue={["item"]} className="max-w-md">
             <AccordionItem value="item">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>

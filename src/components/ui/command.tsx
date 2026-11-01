@@ -67,8 +67,15 @@ function CommandDialog({
 
 function CommandInput({
   className,
+  value,
+  defaultValue,
+  onValueChange,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
+  // cmdk always controls its <input>, and it passes defaultValue to it too,
+  // which React rejects. So an uncontrolled value is kept here.
+  const [ownValue, setOwnValue] = React.useState(String(defaultValue ?? ""))
+
   return (
     <div data-slot="command-input-wrapper" className="p-1 pb-0">
       <InputGroup className="h-9 bg-input/50">
@@ -78,6 +85,11 @@ function CommandInput({
             "w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
             className
           )}
+          value={value ?? ownValue}
+          onValueChange={(next) => {
+            setOwnValue(next)
+            onValueChange?.(next)
+          }}
           {...props}
         />
         <InputGroupAddon>

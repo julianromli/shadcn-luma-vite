@@ -52,10 +52,10 @@ export default function ScrollAreaDocs() {
   return (
     <>
       <Section title="Orientation" columns={2}>
-        <Example title="Vertical" source="VerticalScrollArea">
+        <Example title="Vertical" canvas source="VerticalScrollArea">
           <VerticalScrollArea />
         </Example>
-        <Example title="Horizontal" source="HorizontalScrollArea">
+        <Example title="Horizontal" canvas source="HorizontalScrollArea">
           <HorizontalScrollArea />
         </Example>
       </Section>

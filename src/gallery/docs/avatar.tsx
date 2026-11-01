@@ -23,13 +23,13 @@ export default function AvatarDocs() {
   return (
     <>
       <Section title="Variants">
-        <Example title="Image">
+        <Example title="Image" canvas>
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </Example>
-        <Example title="Fallback">
+        <Example title="Fallback" canvas>
           <Avatar>
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
@@ -43,7 +43,7 @@ export default function AvatarDocs() {
       </Section>
 
       <Section title="Sizes">
-        <Example title="Small">
+        <Example title="Small" canvas>
           <Avatar size="sm">
             <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
             <AvatarFallback>CN</AvatarFallback>
@@ -55,7 +55,7 @@ export default function AvatarDocs() {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </Example>
-        <Example title="Large">
+        <Example title="Large" canvas>
           <Avatar size="lg">
             <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
             <AvatarFallback>CN</AvatarFallback>
@@ -64,7 +64,7 @@ export default function AvatarDocs() {
       </Section>
 
       <Section title="Badge">
-        <Example title="Status dot">
+        <Example title="Status dot" canvas>
           <Avatar size="sm">
             <AvatarFallback>JD</AvatarFallback>
             <AvatarBadge className="bg-green-600" />
@@ -78,7 +78,7 @@ export default function AvatarDocs() {
             <AvatarBadge className="bg-green-600" />
           </Avatar>
         </Example>
-        <Example title="Badge with icon">
+        <Example title="Badge with icon" canvas>
           <Avatar size="lg">
             <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
             <AvatarFallback>CN</AvatarFallback>
@@ -90,7 +90,7 @@ export default function AvatarDocs() {
       </Section>
 
       <Section title="Group">
-        <Example title="Group">
+        <Example title="Group" canvas>
           <AvatarGroup>
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
@@ -104,7 +104,7 @@ export default function AvatarDocs() {
             </Avatar>
           </AvatarGroup>
         </Example>
-        <Example title="Group with count">
+        <Example title="Group with count" canvas>
           <AvatarGroup>
             <Avatar>
               <AvatarFallback>JD</AvatarFallback>
@@ -115,7 +115,7 @@ export default function AvatarDocs() {
             <AvatarGroupCount>+3</AvatarGroupCount>
           </AvatarGroup>
         </Example>
-        <Example title="Large group with icon">
+        <Example title="Large group with icon" canvas>
           <AvatarGroup>
             <Avatar size="lg">
               <AvatarFallback>JD</AvatarFallback>

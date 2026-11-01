@@ -17,7 +17,7 @@ export default function ResizableDocs() {
   return (
     <>
       <Section title="Orientation" columns={2}>
-        <Example title="Horizontal">
+        <Example title="Horizontal" canvas>
           <ResizablePanelGroup
             orientation="horizontal"
             className="min-h-48 max-w-md rounded-2xl border"
@@ -35,7 +35,7 @@ export default function ResizableDocs() {
             </ResizablePanel>
           </ResizablePanelGroup>
         </Example>
-        <Example title="Vertical">
+        <Example title="Vertical" canvas>
           <ResizablePanelGroup
             orientation="vertical"
             className="min-h-48 max-w-md rounded-2xl border"
@@ -60,7 +60,7 @@ export default function ResizableDocs() {
         description="Focus is forced on the right. The handle gets focus when you press Tab. Then the arrow keys change the panel size."
         columns={2}
       >
-        <Example title="With grip">
+        <Example title="With grip" canvas>
           <ResizablePanelGroup
             orientation="horizontal"
             className="min-h-48 max-w-md rounded-2xl border"
@@ -118,7 +118,7 @@ export default function ResizableDocs() {
       </Section>
 
       <Section title="Nested" columns={1}>
-        <Example title="Panels in panels">
+        <Example title="Panels in panels" canvas>
           <ResizablePanelGroup
             orientation="horizontal"
             className="min-h-64 max-w-2xl rounded-2xl border"

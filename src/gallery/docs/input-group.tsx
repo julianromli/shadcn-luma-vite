@@ -30,7 +30,7 @@ export default function InputGroupDocs() {
   return (
     <>
       <Section title="Addon position">
-        <Example title="Inline start">
+        <Example title="Inline start" canvas>
           <InputGroup>
             <InputGroupInput placeholder="Search" />
             <InputGroupAddon>
@@ -38,7 +38,7 @@ export default function InputGroupDocs() {
             </InputGroupAddon>
           </InputGroup>
         </Example>
-        <Example title="Inline end">
+        <Example title="Inline end" canvas>
           <InputGroup>
             <InputGroupInput placeholder="Email" />
             <InputGroupAddon align="inline-end">
@@ -46,7 +46,7 @@ export default function InputGroupDocs() {
             </InputGroupAddon>
           </InputGroup>
         </Example>
-        <Example title="Block start">
+        <Example title="Block start" canvas>
           <InputGroup>
             <InputGroupInput placeholder="Ada Lovelace" />
             <InputGroupAddon align="block-start">
@@ -54,7 +54,7 @@ export default function InputGroupDocs() {
             </InputGroupAddon>
           </InputGroup>
         </Example>
-        <Example title="Block end">
+        <Example title="Block end" canvas>
           <InputGroup>
             <InputGroupTextarea placeholder="Write a comment" />
             <InputGroupAddon align="block-end">
@@ -68,7 +68,7 @@ export default function InputGroupDocs() {
       </Section>
 
       <Section title="Addon content">
-        <Example title="Text">
+        <Example title="Text" canvas>
           <InputGroup>
             <InputGroupAddon>
               <InputGroupText>https://</InputGroupText>
@@ -79,7 +79,7 @@ export default function InputGroupDocs() {
             </InputGroupAddon>
           </InputGroup>
         </Example>
-        <Example title="Icon button">
+        <Example title="Icon button" canvas>
           <InputGroup>
             <InputGroupInput defaultValue="sk-12345" readOnly />
             <InputGroupAddon align="inline-end">
@@ -89,7 +89,7 @@ export default function InputGroupDocs() {
             </InputGroupAddon>
           </InputGroup>
         </Example>
-        <Example title="Keyboard shortcut">
+        <Example title="Keyboard shortcut" canvas>
           <InputGroup>
             <InputGroupInput placeholder="Search" />
             <InputGroupAddon>
@@ -108,7 +108,7 @@ export default function InputGroupDocs() {
             </InputGroupAddon>
           </InputGroup>
         </Example>
-        <Example title="Help icon">
+        <Example title="Help icon" canvas>
           <InputGroup>
             <InputGroupInput placeholder="Password" type="password" />
             <InputGroupAddon align="inline-end">

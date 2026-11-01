@@ -55,7 +55,7 @@ export default function ToastDocs() {
   return (
     <>
       <Section title="Types">
-        <Example title="Default">
+        <Example title="Default" canvas>
           <Button
             variant="outline"
             onClick={() =>
@@ -68,7 +68,7 @@ export default function ToastDocs() {
             Show toast
           </Button>
         </Example>
-        <Example title="Success">
+        <Example title="Success" canvas>
           <Button
             variant="outline"
             onClick={() =>
@@ -82,7 +82,7 @@ export default function ToastDocs() {
             Show success
           </Button>
         </Example>
-        <Example title="Info">
+        <Example title="Info" canvas>
           <Button
             variant="outline"
             onClick={() =>
@@ -96,7 +96,7 @@ export default function ToastDocs() {
             Show info
           </Button>
         </Example>
-        <Example title="Warning">
+        <Example title="Warning" canvas>
           <Button
             variant="outline"
             onClick={() =>
@@ -110,7 +110,7 @@ export default function ToastDocs() {
             Show warning
           </Button>
         </Example>
-        <Example title="Error">
+        <Example title="Error" canvas>
           <Button
             variant="outline"
             onClick={() =>
@@ -124,7 +124,7 @@ export default function ToastDocs() {
             Show error
           </Button>
         </Example>
-        <Example title="Loading">
+        <Example title="Loading" canvas>
           <Button
             variant="outline"
             onClick={() =>
@@ -141,7 +141,7 @@ export default function ToastDocs() {
       </Section>
 
       <Section title="Options">
-        <Example title="Title only">
+        <Example title="Title only" canvas>
           <Button
             variant="outline"
             onClick={() => toast.add({ title: "Link copied" })}
@@ -149,7 +149,7 @@ export default function ToastDocs() {
             Copy link
           </Button>
         </Example>
-        <Example title="With action" source="UndoToast">
+        <Example title="With action" source="UndoToast" canvas>
           <UndoToast />
         </Example>
         <Example title="Promise" source="PromiseToast">

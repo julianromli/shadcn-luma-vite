@@ -13,6 +13,15 @@ import { Badge } from "@/components/ui/badge"
 import { useHighlightedCode } from "@/hooks/use-highlighted-code"
 import type { ForcedState } from "@/gallery/forced-states"
 
+// On the infinite canvas, a doc page shows only the examples that have the
+// `canvas` prop, with no section titles and no code.
+export const CanvasContext = React.createContext<{ labels: boolean } | null>(
+  null
+)
+
+// Examples in a one-column section are wide, so they take a full row.
+const WideContext = React.createContext(false)
+
 export function Section({
   title,
   description,
@@ -24,6 +33,14 @@ export function Section({
   columns?: 1 | 2 | 3
   children: React.ReactNode
 }) {
+  if (React.useContext(CanvasContext)) {
+    return (
+      <WideContext.Provider value={columns === 1}>
+        {children}
+      </WideContext.Provider>
+    )
+  }
+
   return (
     <section className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
@@ -58,10 +75,14 @@ export function Example({
   state,
   code = "",
   vars,
+  canvas = false,
   className,
   children,
 }: {
   title: string
+  // Shows the example on the infinite canvas. Mark the default state of
+  // each variant, size, value and composition, not interaction states.
+  canvas?: boolean
   // Shows the hover, focus or active look without a mouse or keyboard.
   state?: ForcedState
   // The name of a function in the same docs file to show as the code.
@@ -78,12 +99,43 @@ export function Example({
   const [showCode, setShowCode] = React.useState(false)
   const codeId = React.useId()
   const snippet = vars ? fillVars(code, vars) : code
+  const canvasMode = React.useContext(CanvasContext)
+  const wide = React.useContext(WideContext)
+
+  if (canvasMode) {
+    if (!canvas) return null
+
+    return (
+      <figure
+        data-wide={wide || undefined}
+        className={cn(
+          "flex min-w-0 flex-col items-center gap-2",
+          wide && "basis-full"
+        )}
+      >
+        <div
+          className={cn(
+            "flex flex-wrap items-center justify-center gap-3",
+            className
+          )}
+        >
+          {children}
+        </div>
+        {canvasMode.labels && (
+          <figcaption data-ui-chrome className="text-xs text-muted-foreground">
+            {title}
+          </figcaption>
+        )}
+      </figure>
+    )
+  }
 
   return (
     <div className="flex min-w-0 flex-col overflow-hidden rounded-2xl border bg-card">
       <div
+        data-ui-preview
         className={cn(
-          "flex min-h-36 flex-1 flex-wrap items-center justify-center gap-3 p-6",
+          "flex min-h-36 flex-1 flex-wrap items-center justify-center gap-3 bg-background p-6 text-foreground",
           className
         )}
       >
@@ -102,11 +154,7 @@ export function Example({
           >
             {showCode ? "Hide code" : "Code"}
           </Button>
-          <CodeBlockCopyButton
-            value={snippet}
-            variant="ghost"
-            size="icon-sm"
-          />
+          <CodeBlockCopyButton value={snippet} variant="ghost" size="icon-sm" />
         </div>
       </div>
       {showCode && (
