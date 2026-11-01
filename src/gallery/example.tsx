@@ -82,8 +82,9 @@ export function Example({
   return (
     <div className="flex min-w-0 flex-col overflow-hidden rounded-2xl border bg-card">
       <div
+        data-ui-preview
         className={cn(
-          "flex min-h-36 flex-1 flex-wrap items-center justify-center gap-3 p-6",
+          "flex min-h-36 flex-1 flex-wrap items-center justify-center gap-3 bg-background p-6 text-foreground",
           className
         )}
       >
@@ -102,11 +103,7 @@ export function Example({
           >
             {showCode ? "Hide code" : "Code"}
           </Button>
-          <CodeBlockCopyButton
-            value={snippet}
-            variant="ghost"
-            size="icon-sm"
-          />
+          <CodeBlockCopyButton value={snippet} variant="ghost" size="icon-sm" />
         </div>
       </div>
       {showCode && (

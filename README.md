@@ -47,6 +47,7 @@ bun run dev
 | `bun run typecheck` | Checks the types only.                          |
 | `bun run lint`      | Runs ESLint.                                    |
 | `bun run format`    | Formats the code with Prettier.                 |
+| `bun run fonts:update` | Downloads the latest list of Google fonts for the font picker. |
 
 ## Project structure
 
@@ -60,7 +61,11 @@ src/
     example.tsx         <Section>, <Example> and <CodeView>
     forced-states.ts    Makes the forced hover, focus and active states
     registry.ts         Finds the doc pages and sets the categories
+  canvas/               Infinite canvas: pan and zoom, frames
+  theme/                Theme engine: DialKit panels, CSS output, export, fonts
   App.tsx               Gallery layout: sidebar, search, pages
+scripts/
+  update-fonts.ts       Writes src/theme/fonts/google-fonts.json
 ```
 
 ## Add a component page
@@ -155,12 +160,65 @@ These components use transitions.dev recipes:
 
 When the operating system asks for less motion, all transitions and animations go to their end state at once. Spinners still turn.
 
+## Canvas
+
+Open the canvas from the sidebar (**Open canvas**), or go to `#/canvas`. It shows the page of each component as a frame, in one column for each category.
+
+| Input | Action |
+| --- | --- |
+| Drag the background, or Space + drag | Pan |
+| Scroll or trackpad swipe | Pan |
+| Ctrl/⌘ + scroll, or pinch | Zoom at the pointer |
+| Two fingers (touch) | Pan and pinch zoom |
+| Arrow keys (Shift for a larger step) | Pan, when the canvas has focus |
+| `+` / `-` | Zoom in / out |
+| `0` | Zoom to 100% |
+| `1` | Fit all frames |
+| `2` | Fit the selected frame (click a frame title to select it) |
+
+The components in the frames are live:
+- Frames far from the screen do not render.
+- Below 20% zoom, a frame shows only its name.
+- Menus and other popups open at 100% size, and they close when the canvas moves.
+
+The **Canvas** panel (DialKit) sets:
+- the preview mode: current theme, light, dark, or light and dark side by side;
+- the background: dots, grid or plain;
+- the frame gap;
+- the labels.
+
+In the light modes, the page is set to light while the canvas shows them.
+
+## Theme
+
+The DialKit panel (top right, on every page) changes the design foundation live:
+
+| Panel | Controls |
+| --- | --- |
+| Theme | Export CSS, Reset all |
+| Colors (light), Colors (dark) | Every semantic color token |
+| Typography | Sans, heading and mono font (any Google font, with a searchable picker), text scale |
+| Radius & spacing | `--radius`, `--spacing` |
+| Shadows | Color, opacity and size of all shadows |
+| Motion | Durations, easings, scales, distances and blur |
+
+How it works:
+- The values are saved in localStorage, one key for each panel (`dialkit:ds-*`). DialKit **versions** let you save, compare and switch between themes.
+- The custom tokens go on `:root`, so the components and their popups use them. The gallery interface (`[data-ui-chrome]`) keeps the default theme, and the component previews (`[data-ui-preview]`) use the custom theme.
+- A chosen font loads from Google Fonts in the browser.
+
+**Export CSS** copies the theme as CSS:
+- `:root` and `.dark` blocks for `src/index.css`;
+- a `:root` block for `src/styles/motion.css`;
+- for custom fonts, the Fontsource `@import` lines and the `bun add` command, so the exported theme does not use Google Fonts.
+
 ## Known problems
 
 These problems are in the files that shadcn generates:
 
 - `bun run lint` shows 2 errors (`react-hooks/set-state-in-effect`) in `src/components/ui/carousel.tsx` and `src/hooks/use-mobile.ts`. The code works.
 - The Accordion trigger has no visible focus style.
+- On the canvas, popups open at 100% size. In the light and dark side-by-side mode, popups use the page theme, not the theme of the frame.
 - On the Sidebar page, Ctrl+B opens and closes the demo sidebars and the gallery sidebar together.
 
 The production bundle is approximately 600 kB because all pages load at the start. The build shows a chunk size warning.
