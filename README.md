@@ -123,6 +123,38 @@ The plugin also makes the import block at the top of each page. This block conta
 
 Real `:hover`, `:focus` and `:active` styles need a mouse or a keyboard. To show these states side by side, `forced-states.ts` reads the page CSS. It copies each rule that has one of these pseudo-classes and puts a data attribute in place of the pseudo-class (for example, `[data-force-hover]`). An `<Example state="hover">` puts this attribute on its content. Forced examples do not accept input. The Default example stays live.
 
+## Motion
+
+The motion tokens come from [transitions.dev](https://transitions.dev). They are in `src/styles/motion.css`. The gallery page **Motion** shows each token with a live demo.
+
+Use the tokens in Tailwind classes:
+
+```tsx
+<div className="data-open:duration-(--duration-fast) data-closed:duration-(--duration-quick) ease-(--ease-smooth-out) data-open:zoom-in-97 data-closed:zoom-out-99" />
+```
+
+Rules:
+
+- Choose a token by what the motion does, not by the nearest number.
+- A close is faster than an open. Popups and modals open in `--duration-fast` (250ms) and close in `--duration-quick` (150ms). Panels open in `--duration-slow` (400ms) and close in `--duration-medium` (350ms).
+- Use `--ease-smooth-out` for surfaces that open, close, slide or resize. Do not use a bounce curve for a close.
+- Do not use `transition-all`. Write the exact properties, for example `transition-[color,background-color,box-shadow]`.
+
+The keyword easings `--ease-out`, `--ease-in-out` and `--ease-linear` are not tokens in this project. Tailwind already uses these names, and a token with the same name would change the Tailwind `ease-out`, `ease-in-out` and `ease-linear` utilities. Use those utilities instead.
+
+These components use transitions.dev recipes:
+
+| Component | Motion |
+| --- | --- |
+| Tabs | The active tab background slides from tab to tab (`TabsIndicator`). |
+| Switch | The thumb travels with a double bounce. It does not animate on page load. |
+| Checkbox | The box fills, then the check draws itself. |
+| Tooltip | Opens after 80ms. Closes in 50ms. |
+| Toast | Rises with a 2px blur and a small scale in 350ms. Closes in 250ms. |
+| Accordion | Opens and closes in 250ms. The chevron flips. |
+
+When the operating system asks for less motion, all transitions and animations go to their end state at once. Spinners still turn.
+
 ## Known problems
 
 These problems are in the files that shadcn generates:

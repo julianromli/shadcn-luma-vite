@@ -1,6 +1,7 @@
 import type * as React from "react"
 
 export const CATEGORIES = [
+  "Foundations",
   "Actions",
   "Forms",
   "Data display",
