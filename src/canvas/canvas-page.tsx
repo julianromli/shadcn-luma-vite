@@ -116,6 +116,32 @@ export function CanvasPage() {
 
   React.useEffect(() => setViewport(viewportRef.current), [viewportRef])
 
+  // Pre-mount the cards one at a time in idle time, in card order, so a
+  // first pan never has to build a heavy card. It waits while a gesture
+  // runs, and each mount is a transition, so React can stop to paint.
+  const [premounted, setPremounted] = React.useState(0)
+  React.useEffect(() => {
+    if (premounted >= cards.length) return
+    const viewport = viewportRef.current
+    const schedule = (callback: () => void) =>
+      "requestIdleCallback" in window
+        ? requestIdleCallback(callback, { timeout: 2000 })
+        : setTimeout(callback, 50)
+    const cancel = (id: number) =>
+      "cancelIdleCallback" in window ? cancelIdleCallback(id) : clearTimeout(id)
+
+    let id = 0
+    const next = () => {
+      if (viewport?.hasAttribute("data-gesturing")) {
+        id = schedule(next)
+        return
+      }
+      React.startTransition(() => setPremounted((count) => count + 1))
+    }
+    id = schedule(next)
+    return () => cancel(id)
+  }, [premounted, viewportRef])
+
   // A light subtree is not possible inside html.dark (Tailwind's dark:
   // variant matches any .dark ancestor). So these modes set html to light
   // while the canvas shows them.
@@ -207,7 +233,7 @@ export function CanvasPage() {
           className="absolute top-0 left-0 origin-top-left group-data-gesturing/canvas:pointer-events-none group-data-gesturing/canvas:will-change-transform group-data-gesturing/canvas:**:[animation-play-state:paused] data-animating:transition-transform data-animating:duration-(--duration-fast) data-animating:ease-(--ease-smooth-out)"
           style={{ width: layout.width, height: layout.height }}
         >
-          {cards.map((doc) => (
+          {cards.map((doc, index) => (
             <Frame
               // Remount on a mode change: Chrome keeps the old ::placeholder
               // color when the html class changes from dark to light.
@@ -219,6 +245,7 @@ export function CanvasPage() {
               viewport={viewport}
               style={layout.placements[doc.slug]}
               placeholderHeight={sizes[doc.slug]?.height ?? FIRST_HEIGHT_GUESS}
+              premount={index < premounted}
               onMeasure={onMeasure}
             />
           ))}

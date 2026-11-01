@@ -22,6 +22,7 @@ export const Frame = React.memo(function Frame({
   viewport,
   style,
   placeholderHeight,
+  premount,
   onMeasure,
 }: {
   doc: Doc
@@ -34,16 +35,18 @@ export const Frame = React.memo(function Frame({
   style: React.CSSProperties
   // The last measured height, for a card that is not rendered.
   placeholderHeight: number
+  // The canvas mounts cards one at a time in idle time, before they come
+  // near the screen, so a first pan does not have to build them.
+  premount: boolean
   onMeasure: (slug: string, size: FrameSize) => void
 }) {
   const ref = React.useRef<HTMLDivElement>(null)
   const [seen, setSeen] = React.useState(false)
-  const rendered = seen && !lowDetail
+  const rendered = (seen || premount) && !lowDetail
 
-  // A card renders its components when it first comes near the screen, and
-  // then stays mounted, so a pan does not build heavy cards again. The
-  // browser skips the layout and paint of cards off the screen
-  // (content-visibility: auto). The first render is a transition, so it
+  // A card renders its components when it first comes near the screen (or
+  // when the canvas pre-mounts it), and then stays mounted, so a pan does
+  // not build heavy cards again. The first render is a transition, so it
   // does not block a pan.
   React.useEffect(() => {
     const element = ref.current
@@ -74,14 +77,22 @@ export const Frame = React.memo(function Frame({
       const content = [
         ...entry.target.querySelectorAll("[data-ui-preview] > div"),
       ]
-      onMeasure(doc.slug, {
-        height: entry.borderBoxSize[0].blockSize,
-        wide:
-          !!entry.target.querySelector("[data-wide]") ||
-          content.some(
-            (element) => element.scrollWidth > element.clientWidth + 1
-          ),
-      })
+      const wide =
+        !!entry.target.querySelector("[data-wide]") ||
+        content.some((element) => element.scrollWidth > element.clientWidth + 1)
+      const width = entry.borderBoxSize[0].inlineSize
+      onMeasure(doc.slug, { height: entry.borderBoxSize[0].blockSize, wide })
+
+      // After a measure at the final width, the browser can skip the layout
+      // and paint of this card while it is off the screen. Not before: the
+      // masonry needs the real height, also for a pre-mounted card. A card
+      // that must be wide is final only when it has 2 columns (more than
+      // 400px; one column is 360px).
+      if (!wide || width > 400) {
+        for (const copy of entry.target.children) {
+          if (copy instanceof HTMLElement) copy.style.contentVisibility = "auto"
+        }
+      }
     })
     observer.observe(element)
     return () => observer.disconnect()
@@ -105,7 +116,7 @@ export const Frame = React.memo(function Frame({
           key={String(dark)}
           data-ui-preview
           className={cn(
-            "overflow-hidden rounded-3xl border bg-background text-foreground shadow-xs [contain-intrinsic-size:auto_280px] [content-visibility:auto]",
+            "overflow-hidden rounded-3xl border bg-background text-foreground shadow-xs [contain-intrinsic-size:auto_280px]",
             dark && "dark"
           )}
         >
