@@ -11,8 +11,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import { Separator } from "@/components/ui/separator"
-import { Frame, type PreviewMode } from "@/canvas/frame"
-import { usePanZoom, type Rect } from "@/canvas/use-pan-zoom"
+import { Frame, type FrameSize, type PreviewMode } from "@/canvas/frame"
+import { usePanZoom } from "@/canvas/use-pan-zoom"
 import { CATEGORIES, docs } from "@/gallery/registry"
 
 const PREVIEW_MODES: { value: PreviewMode; label: string }[] = [
@@ -25,34 +25,93 @@ const PREVIEW_MODES: { value: PreviewMode; label: string }[] = [
 const canvasConfig = {
   previewMode: { type: "select", options: PREVIEW_MODES },
   background: { type: "select", options: ["dots", "grid", "plain"] },
-  frameGap: [96, 16, 400, 8],
-  showLabels: true,
+  gap: [24, 8, 120, 4],
+  showLabels: false,
 } satisfies DialConfig
 
-// Below this zoom, frames show only their name.
+// Below this zoom, cards show only their name.
 const LOW_DETAIL_SCALE = 0.2
 
+// The masonry layout: cards are one column wide, or 2 columns when they
+// have wide examples. Each card goes where its columns are the shortest,
+// like a photo gallery.
+const COLUMNS = 8
+const COLUMN_WIDTH = 360
+const FIRST_HEIGHT_GUESS = 280
+
 // Foundations (the Motion page) has no components, so it is not shown.
-const columns = CATEGORIES.filter((category) => category !== "Foundations")
-  .map((category) => ({
-    category,
-    items: docs.filter((doc) => doc.category === category),
-  }))
-  .filter((column) => column.items.length)
+const cards = CATEGORIES.filter(
+  (category) => category !== "Foundations"
+).flatMap((category) => docs.filter((doc) => doc.category === category))
+
+type Placement = { left: number; top: number; width: number }
+
+function masonry(sizes: Record<string, FrameSize>, gap: number) {
+  const heights: number[] = Array(COLUMNS).fill(0)
+  const placements: Record<string, Placement> = {}
+
+  for (const doc of cards) {
+    const size = sizes[doc.slug]
+    const span = size?.wide ? 2 : 1
+    let column = 0
+    let top = Infinity
+    for (let start = 0; start + span <= COLUMNS; start++) {
+      const bottom = Math.max(...heights.slice(start, start + span))
+      if (bottom < top) {
+        top = bottom
+        column = start
+      }
+    }
+    placements[doc.slug] = {
+      left: column * (COLUMN_WIDTH + gap),
+      top,
+      width: span * COLUMN_WIDTH + (span - 1) * gap,
+    }
+    const height = size?.height ?? FIRST_HEIGHT_GUESS
+    for (let index = column; index < column + span; index++) {
+      heights[index] = top + height + gap
+    }
+  }
+
+  return {
+    placements,
+    width: COLUMNS * COLUMN_WIDTH + (COLUMNS - 1) * gap,
+    height: Math.max(...heights) - gap,
+  }
+}
 
 export function CanvasPage() {
   const settings = useDialKitController("Canvas", canvasConfig, {
     id: "ds-canvas",
     persist: true,
   })
-  const { previewMode, background, frameGap, showLabels } = settings.values
+  const { previewMode, background, gap, showLabels } = settings.values
   const mode = previewMode as PreviewMode
 
-  const pz = usePanZoom({ x: 48, y: 96, scale: 0.6 })
+  const pz = usePanZoom({ x: 48, y: 80, scale: 0.75 })
   const { view, viewportRef } = pz
   const layerRef = React.useRef<HTMLDivElement>(null)
   const [viewport, setViewport] = React.useState<HTMLDivElement | null>(null)
-  const [selected, setSelected] = React.useState<string | null>(null)
+  const [sizes, setSizes] = React.useState<Record<string, FrameSize>>({})
+  const layout = masonry(sizes, gap)
+
+  const onMeasure = React.useCallback((slug: string, size: FrameSize) => {
+    setSizes((current) => {
+      const last = current[slug]
+      if (
+        last &&
+        last.wide === size.wide &&
+        Math.abs(last.height - size.height) < 1
+      ) {
+        return current
+      }
+      // A card stays wide once it has shown wide examples.
+      return {
+        ...current,
+        [slug]: { ...size, wide: size.wide || !!last?.wide },
+      }
+    })
+  }, [])
 
   React.useEffect(() => setViewport(viewportRef.current), [viewportRef])
 
@@ -69,20 +128,6 @@ export function CanvasPage() {
     }
   }, [mode])
 
-  const frameRect = (slug: string): Rect | null => {
-    const layer = layerRef.current
-    const frame = layer?.querySelector(`[data-frame="${slug}"]`)
-    if (!layer || !frame) return null
-    const box = frame.getBoundingClientRect()
-    const origin = layer.getBoundingClientRect()
-    return {
-      x: (box.left - origin.left) / view.scale,
-      y: (box.top - origin.top) / view.scale,
-      width: box.width / view.scale,
-      height: box.height / view.scale,
-    }
-  }
-
   const fitAll = () => {
     const layer = layerRef.current
     if (layer) {
@@ -93,11 +138,6 @@ export function CanvasPage() {
         height: layer.offsetHeight,
       })
     }
-  }
-
-  const fitFrame = (slug: string) => {
-    const rect = frameRect(slug)
-    if (rect) pz.fitRect({ ...rect, height: Math.min(rect.height, 900) })
   }
 
   const onKeyDown = (event: React.KeyboardEvent) => {
@@ -114,7 +154,6 @@ export function CanvasPage() {
       "-": () => pz.zoomTo(view.scale / 1.25, undefined, true),
       "0": () => pz.zoomTo(1, undefined, true),
       "1": fitAll,
-      "2": () => selected && fitFrame(selected),
     }
     const action = keys[event.key]
     if (action) {
@@ -137,7 +176,7 @@ export function CanvasPage() {
         ref={viewportRef}
         tabIndex={0}
         role="application"
-        aria-label="Component canvas. Drag the background, or hold Space and drag, to pan. Ctrl or Command and scroll to zoom. Arrow keys pan. Plus and minus zoom. 0 zooms to 100%. 1 fits all frames. 2 fits the selected frame."
+        aria-label="Component canvas. Drag the background, or hold Space and drag, to pan. Ctrl or Command and scroll to zoom. Arrow keys pan. Plus and minus zoom. 0 zooms to 100%. 1 fits all components."
         data-panning={pz.panning || undefined}
         onKeyDown={onKeyDown}
         className="absolute inset-0 touch-none outline-none focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:ring-inset data-panning:cursor-grabbing"
@@ -153,45 +192,26 @@ export function CanvasPage() {
           onTransitionEnd={(event) => {
             if (event.target === event.currentTarget) pz.onAnimationEnd()
           }}
-          className="absolute top-0 left-0 flex origin-top-left items-start data-animating:transition-transform data-animating:duration-(--duration-fast) data-animating:ease-(--ease-smooth-out)"
+          className="absolute top-0 left-0 origin-top-left data-animating:transition-transform data-animating:duration-(--duration-fast) data-animating:ease-(--ease-smooth-out)"
           data-animating={pz.animating || undefined}
           style={{
             transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})`,
-            gap: frameGap,
+            width: layout.width,
+            height: layout.height,
           }}
         >
-          {columns.map((column) => (
-            <section
-              key={column.category}
-              aria-label={column.category}
-              data-canvas-background
-              className="flex flex-col"
-              style={{ gap: frameGap / 2 }}
-            >
-              {showLabels && (
-                <h2
-                  data-ui-chrome
-                  className="text-3xl font-semibold tracking-tight text-foreground"
-                >
-                  {column.category}
-                </h2>
-              )}
-              {column.items.map((doc) => (
-                <Frame
-                  key={doc.slug}
-                  doc={doc}
-                  mode={mode}
-                  showLabel={showLabels}
-                  selected={selected === doc.slug}
-                  lowDetail={view.scale < LOW_DETAIL_SCALE}
-                  viewport={viewport}
-                  onSelect={() => {
-                    setSelected(doc.slug)
-                    fitFrame(doc.slug)
-                  }}
-                />
-              ))}
-            </section>
+          {cards.map((doc) => (
+            <Frame
+              key={doc.slug}
+              doc={doc}
+              mode={mode}
+              showLabels={showLabels}
+              lowDetail={view.scale < LOW_DETAIL_SCALE}
+              viewport={viewport}
+              style={layout.placements[doc.slug]}
+              placeholderHeight={sizes[doc.slug]?.height ?? FIRST_HEIGHT_GUESS}
+              onMeasure={onMeasure}
+            />
           ))}
         </div>
       </div>

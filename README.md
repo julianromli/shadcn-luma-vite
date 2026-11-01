@@ -163,7 +163,7 @@ When the operating system asks for less motion, all transitions and animations g
 
 ## Canvas
 
-Open the canvas from the sidebar (**Open canvas**), or go to `#/canvas`. It shows only the components, with no code. Each component is a frame, in one column for each category. A frame shows the examples that have the `canvas` prop:
+Open the canvas from the sidebar (**Open canvas**), or go to `#/canvas`. It shows only the components, with no titles, descriptions or code. Each component is a card, and the cards are packed in a masonry layout, like a photo gallery. A card is one column wide (360px), or 2 columns when it has wide examples (tables, charts, sidebars). A card shows the examples that have the `canvas` prop:
 
 - Each variant, size and other prop value, in its default state.
 - Off and on, for controls with a value (Checkbox, Switch, Tabs ...).
@@ -180,19 +180,18 @@ Interaction states (hover, focus, active, disabled, invalid, read-only, loading)
 | Arrow keys (Shift for a larger step) | Pan, when the canvas has focus |
 | `+` / `-` | Zoom in / out |
 | `0` | Zoom to 100% |
-| `1` | Fit all frames |
-| `2` | Fit the selected frame (click a frame title to select it) |
+| `1` | Fit all components |
 
 The components in the frames are live:
-- Frames far from the screen do not render.
-- Below 20% zoom, a frame shows only its name.
+- Cards far from the screen do not render.
+- Below 20% zoom, a card shows only its name.
 - Menus and other popups open at 100% size, and they close when the canvas moves.
 
 The **Canvas** panel (DialKit) sets:
-- the preview mode: current theme, light, dark, or light and dark side by side;
+- the preview mode: current theme, light, dark, or light and dark (each card shows a light copy above a dark copy);
 - the background: dots, grid or plain;
-- the frame gap;
-- the labels.
+- the gap between cards;
+- captions under each example (off by default).
 
 In the light modes, the page is set to light while the canvas shows them.
 
@@ -225,7 +224,7 @@ These problems are in the files that shadcn generates:
 
 - `bun run lint` shows 2 errors (`react-hooks/set-state-in-effect`) in `src/components/ui/carousel.tsx` and `src/hooks/use-mobile.ts`. The code works.
 - The Accordion trigger has no visible focus style.
-- On the canvas, popups open at 100% size. In the light and dark side-by-side mode, popups use the page theme, not the theme of the frame.
+- On the canvas, popups open at 100% size. In the light and dark mode, popups use the page theme, not the theme of the frame.
 - On the Sidebar page, Ctrl+B opens and closes the demo sidebars and the gallery sidebar together.
 
 The production bundle is approximately 600 kB because all pages load at the start. The build shows a chunk size warning.
