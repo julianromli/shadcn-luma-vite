@@ -35,7 +35,7 @@ const LOW_DETAIL_SCALE = 0.2
 // The masonry layout: cards are one column wide, or 2 columns when they
 // have wide examples. Each card goes where its columns are the shortest,
 // like a photo gallery.
-const COLUMNS = 8
+const COLUMNS = 14
 const COLUMN_WIDTH = 360
 const FIRST_HEIGHT_GUESS = 280
 
@@ -118,7 +118,8 @@ export function CanvasPage() {
   // A light subtree is not possible inside html.dark (Tailwind's dark:
   // variant matches any .dark ancestor). So these modes set html to light
   // while the canvas shows them.
-  React.useEffect(() => {
+  // A layout effect, so the class changes before the new cards get styles.
+  React.useLayoutEffect(() => {
     if (mode !== "light" && mode !== "both") return
     const html = document.documentElement
     const wasDark = html.classList.contains("dark")
@@ -171,7 +172,9 @@ export function CanvasPage() {
         : undefined
 
   return (
-    <div className="relative h-svh w-full overflow-hidden bg-muted/40">
+    // overflow-clip and not overflow-hidden: a focused control in a card must
+    // not scroll the canvas (and the toolbar) out of view.
+    <div className="relative h-svh w-full overflow-clip bg-muted/40">
       <div
         ref={viewportRef}
         tabIndex={0}
@@ -179,7 +182,13 @@ export function CanvasPage() {
         aria-label="Component canvas. Drag the background, or hold Space and drag, to pan. Ctrl or Command and scroll to zoom. Arrow keys pan. Plus and minus zoom. 0 zooms to 100%. 1 fits all components."
         data-panning={pz.panning || undefined}
         onKeyDown={onKeyDown}
-        className="absolute inset-0 touch-none outline-none focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:ring-inset data-panning:cursor-grabbing"
+        // The viewport is the IntersectionObserver root, so it keeps
+        // overflow-hidden. Focus can still scroll it, so reset that.
+        onScroll={(event) => {
+          event.currentTarget.scrollTop = 0
+          event.currentTarget.scrollLeft = 0
+        }}
+        className="absolute inset-0 touch-none overflow-hidden outline-none focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:ring-inset data-panning:cursor-grabbing"
         style={{
           backgroundImage,
           backgroundSize: `${backgroundSize}px ${backgroundSize}px`,
@@ -202,7 +211,9 @@ export function CanvasPage() {
         >
           {cards.map((doc) => (
             <Frame
-              key={doc.slug}
+              // Remount on a mode change: Chrome keeps the old ::placeholder
+              // color when the html class changes from dark to light.
+              key={`${doc.slug}-${mode}`}
               doc={doc}
               mode={mode}
               showLabels={showLabels}

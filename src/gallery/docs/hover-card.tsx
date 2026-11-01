@@ -2,7 +2,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { Calendar03Icon } from "@hugeicons/core-free-icons"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import {
   HoverCard,
   HoverCardContent,
@@ -26,7 +26,7 @@ export default function HoverCardDocs() {
           <HoverCard>
             <HoverCardTrigger
               href="#/hover-card"
-              render={<Button variant="link" nativeButton={false} />}
+              className={buttonVariants({ variant: "link" })}
             >
               @alexlee
             </HoverCardTrigger>
@@ -41,7 +41,11 @@ export default function HoverCardDocs() {
                     Designer and engineer. Makes tools for small teams.
                   </p>
                   <div className="flex items-center gap-2 pt-1 text-xs text-muted-foreground">
-                    <HugeiconsIcon icon={Calendar03Icon} strokeWidth={2} className="size-4" />
+                    <HugeiconsIcon
+                      icon={Calendar03Icon}
+                      strokeWidth={2}
+                      className="size-4"
+                    />
                     Joined March 2024
                   </div>
                 </div>

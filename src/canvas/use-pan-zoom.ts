@@ -116,7 +116,9 @@ export function usePanZoom(initial: View) {
       const box = viewport.getBoundingClientRect()
       // A trackpad pinch arrives as a wheel event with ctrlKey.
       if (event.ctrlKey || event.metaKey) {
-        zoomTo(viewRef.current.scale * Math.exp(-event.deltaY * 0.01), {
+        // A mouse wheel step is about 100, a pinch step is much smaller.
+        const speed = Math.abs(event.deltaY) >= 50 ? 0.0015 : 0.01
+        zoomTo(viewRef.current.scale * Math.exp(-event.deltaY * speed), {
           x: event.clientX - box.left,
           y: event.clientY - box.top,
         })

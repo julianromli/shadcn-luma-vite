@@ -58,9 +58,18 @@ export function Frame({
 
     const observer = new ResizeObserver(([entry]) => {
       if (!entry.target.hasAttribute("data-rendered")) return
+      // Wide when it has wide examples, or when its content does not fit
+      // in one column.
+      const content = [
+        ...entry.target.querySelectorAll("[data-ui-preview] > div"),
+      ]
       onMeasure(doc.slug, {
         height: entry.borderBoxSize[0].blockSize,
-        wide: !!entry.target.querySelector("[data-wide]"),
+        wide:
+          !!entry.target.querySelector("[data-wide]") ||
+          content.some(
+            (element) => element.scrollWidth > element.clientWidth + 1
+          ),
       })
     })
     observer.observe(element)

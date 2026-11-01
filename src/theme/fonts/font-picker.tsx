@@ -68,7 +68,8 @@ export function FontPicker({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent data-ui-chrome className="sm:max-w-lg">
+      {/* Above the DialKit panel (z-index 9999), which opens this picker. */}
+      <DialogContent data-ui-chrome className="z-[10000] sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>

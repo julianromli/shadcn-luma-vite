@@ -7,10 +7,17 @@ import { MinusSignIcon } from "@hugeicons/core-free-icons"
 function InputOTP({
   className,
   containerClassName,
+  value,
+  defaultValue,
+  onChange,
   ...props
 }: React.ComponentProps<typeof OTPInput> & {
   containerClassName?: string
 }) {
+  // OTPInput always controls its <input>, and it passes defaultValue to it
+  // too, which React rejects. So an uncontrolled value is kept here.
+  const [ownValue, setOwnValue] = React.useState(String(defaultValue ?? ""))
+
   return (
     <OTPInput
       data-slot="input-otp"
@@ -20,6 +27,11 @@ function InputOTP({
       )}
       spellCheck={false}
       className={cn("disabled:cursor-not-allowed", className)}
+      value={value ?? ownValue}
+      onChange={(next) => {
+        setOwnValue(next)
+        onChange?.(next)
+      }}
       {...props}
     />
   )
